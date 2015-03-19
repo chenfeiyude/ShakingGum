@@ -13,11 +13,14 @@
     Status * status;
     NSInteger speed;
     CCNode * gameObj;
+    BOOL isDead;
 }
 
 -(id) init;
 -(void) initPosition;
 -(void) crashing; // abstract method, must be override in child classes
 -(void) initStatus; // abstract method, must be override in child classes
--(void) initSpeed; 
+-(void) initSpeed;
+-(BOOL) isDead; // check whether this item is dead or not
+-(void) killItem;//kill this item
 @end

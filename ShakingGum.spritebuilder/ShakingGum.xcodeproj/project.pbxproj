@@ -100,6 +100,7 @@
 		FAD934FB1ABA3CD00050B39E /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934FA1ABA3CD00050B39E /* Status.m */; };
 		FAD934FE1ABA576B0050B39E /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934FD1ABA576B0050B39E /* Bomb.m */; };
 		FAD935011ABA57A30050B39E /* ScoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD935001ABA57A30050B39E /* ScoreItem.m */; };
+		FAF579BD1ABB7AE300879760 /* ItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF579BC1ABB7AE300879760 /* ItemManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,8 @@
 		FAD934FD1ABA576B0050B39E /* Bomb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bomb.m; sourceTree = "<group>"; };
 		FAD934FF1ABA57A30050B39E /* ScoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreItem.h; sourceTree = "<group>"; };
 		FAD935001ABA57A30050B39E /* ScoreItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreItem.m; sourceTree = "<group>"; };
+		FAF579BB1ABB7AE300879760 /* ItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManager.h; sourceTree = "<group>"; };
+		FAF579BC1ABB7AE300879760 /* ItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +473,8 @@
 				FAD934FD1ABA576B0050B39E /* Bomb.m */,
 				FAD934FF1ABA57A30050B39E /* ScoreItem.h */,
 				FAD935001ABA57A30050B39E /* ScoreItem.m */,
+				FAF579BB1ABB7AE300879760 /* ItemManager.h */,
+				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				F01FBD5F1AB641DC006F762F /* Gameplay.m in Sources */,
 				F01FBD581AB63AF9006F762F /* Gum.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				FAF579BD1ABB7AE300879760 /* ItemManager.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				FAD935011ABA57A30050B39E /* ScoreItem.m in Sources */,
 				FAD934FB1ABA3CD00050B39E /* Status.m in Sources */,

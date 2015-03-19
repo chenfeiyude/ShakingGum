@@ -33,7 +33,7 @@
 }
 
 -(void) initStatus{
-    if (!status) {
+    if (status == nil) {
         status = [[Status alloc] init];
     }
     [status setStatus: ADD_SCORE];

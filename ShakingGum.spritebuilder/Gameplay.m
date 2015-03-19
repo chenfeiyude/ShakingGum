@@ -19,13 +19,15 @@
 {
     self.userInteractionEnabled = TRUE;
     
-    
+    itemManager = [ItemManager getInstance];
 }
 
 // called on every touch in this scene
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     NSLog(@"Touched");
+    //test create items
+    [itemManager createRandomItem];
 }
 
 

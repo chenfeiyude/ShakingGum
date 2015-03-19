@@ -7,7 +7,10 @@
 //
 
 #import "CCNode.h"
+#import "ItemManager.h"
 
-@interface Gameplay : CCNode
+@interface Gameplay : CCNode {
+    ItemManager *itemManager;
+}
 
 @end
