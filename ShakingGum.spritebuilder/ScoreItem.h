@@ -7,7 +7,9 @@
 //
 
 #import "CCSprite.h"
+#import "Item.h"
 
-@interface ScoreItem : CCSprite
+@interface ScoreItem : Item
+
 
 @end

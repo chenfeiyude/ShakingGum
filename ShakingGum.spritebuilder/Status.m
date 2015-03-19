@@ -10,4 +10,32 @@
 
 @implementation Status
 
+-(id)init{
+    self = [super init];
+    
+    if(self)
+    {
+        status= INIT;
+        value= 0;
+    }
+    
+    return self;
+}
+
+-(void) setStatus:(GameObjStatus)newStatus{
+    status = newStatus;
+}
+
+-(GameObjStatus) getStatus{
+    return status;
+}
+
+-(void) setvalue:(NSInteger)newValue {
+    value = newValue;
+}
+
+-(NSInteger) getValue{
+    return value;
+}
+
 @end

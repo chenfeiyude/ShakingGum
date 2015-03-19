@@ -7,7 +7,8 @@
 //
 
 #import "CCSprite.h"
+#import "Item.h"
 
-@interface Bomb : CCSprite
+@interface Bomb : Item
 
 @end

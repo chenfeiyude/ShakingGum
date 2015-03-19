@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Status : NSObject
+typedef NS_ENUM(NSInteger, GameObjStatus) {
+    INIT,
+    DEAD,
+    ADD_SCORE
+};
+
+@interface Status : NSObject {
+    GameObjStatus status; // gum and items status
+    NSInteger     value;  // 0 as default if it is not used
+}
+
+-(id) init;
+-(void) setStatus: (GameObjStatus )newStatus;
+-(GameObjStatus ) getStatus;
+-(void) setvalue: (NSInteger) newValue;
+-(NSInteger) getValue;
 
 @end

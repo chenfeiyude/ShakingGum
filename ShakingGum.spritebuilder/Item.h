@@ -7,7 +7,17 @@
 //
 
 #import "CCSprite.h"
+#import "Status.h"
 
-@interface Item : CCSprite
+@interface Item : CCSprite {
+    Status * status;
+    NSInteger speed;
+    CCNode * gameObj;
+}
 
+-(id) init;
+-(void) initPosition;
+-(void) crashing; // abstract method, must be override in child classes
+-(void) initStatus; // abstract method, must be override in child classes
+-(void) initSpeed; 
 @end

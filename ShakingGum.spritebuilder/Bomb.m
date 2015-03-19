@@ -10,4 +10,34 @@
 
 @implementation Bomb
 
+
+-(id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        CCLOG(@"Bomb created");
+        [self initStatus];
+        gameObj = [CCBReader load:@"Bomb"];
+        [self initPosition];
+        [self initSpeed];
+    }
+    
+    return self;
+}
+
+
+-(void) crashing{
+    // gum will be dead
+    
+}
+
+-(void) initStatus{
+    if (!status) {
+        status = [[Status alloc] init];
+    }
+    [status setStatus: DEAD];
+}
+
 @end

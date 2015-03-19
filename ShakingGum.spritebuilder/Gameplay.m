@@ -18,6 +18,8 @@
 - (void)didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
+    
+    
 }
 
 // called on every touch in this scene
@@ -25,5 +27,7 @@
 {
     NSLog(@"Touched");
 }
+
+
 
 @end
