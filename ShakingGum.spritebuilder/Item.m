@@ -79,4 +79,8 @@
     isDead = YES;
 }
 
+-(id) getItem {
+    return gameObj;
+}
+
 @end

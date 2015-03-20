@@ -25,6 +25,6 @@ typedef NS_ENUM(NSInteger, ItemType) {
 -(void) addItem: (Item *) item;
 -(void) deleteItem: (Item *) item;
 -(void) clearItems;
--(void) createItem: (ItemType) itemType;
--(void) createRandomItem;
+-(id) createItem: (ItemType) itemType;
+-(id) createRandomItem;
 @end

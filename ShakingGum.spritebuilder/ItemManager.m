@@ -56,29 +56,35 @@
     }
 }
 
--(void) createItem:(ItemType)itemType{
+-(id) createItem:(ItemType)itemType{
     switch (itemType) {
         case BOMB:
-            [currentItems addObject: [[Bomb alloc] init]];
-            break;
+        {
+            Bomb *bomb = [[Bomb alloc] init];
+            [currentItems addObject: bomb];
+            return bomb;
+        }
         case SCORE_ITEM:
-            [currentItems addObject: [[ScoreItem alloc] init]];
-            break;
+        {
+            ScoreItem *scoreItem = [[ScoreItem alloc] init];
+            [currentItems addObject: scoreItem];
+            return scoreItem;
+        }
         default:
-            break;
+            return nil;
     }
 }
 
--(void) createRandomItem{
-    int random = arc4random_uniform(2);
+-(id) createRandomItem{
+    int random = arc4random_uniform(1);
     ItemType itemType = NONE;
-    if (random == 1) {
+    if (random == 0) {
         itemType = BOMB;
     }
-    else if (random == 2) {
+    else if (random == 1) {
         itemType = SCORE_ITEM;
     }
-    [self createItem: itemType];
+    return [self createItem: itemType];
 }
 
 @end

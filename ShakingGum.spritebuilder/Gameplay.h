@@ -11,6 +11,7 @@
 
 @interface Gameplay : CCNode {
     ItemManager *itemManager;
+    CCNode * _physicsNode;
 }
 
 @end

@@ -12,6 +12,7 @@
 @implementation Gameplay
 {
     Gum *_gum;
+    
 }
 
 // is called when CCB file has completed loading
@@ -27,7 +28,7 @@
 {
     NSLog(@"Touched");
     //test create items
-    [itemManager createRandomItem];
+    [_physicsNode addChild:[[itemManager createRandomItem] getItem]];
 }
 
 

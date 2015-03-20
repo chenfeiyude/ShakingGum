@@ -23,4 +23,5 @@
 -(void) initSpeed;
 -(BOOL) isDead; // check whether this item is dead or not
 -(void) killItem;//kill this item
+-(id) getItem;
 @end
