@@ -42,23 +42,18 @@
     if (gameObj != nil) {
         CGRect screen = [[UIScreen mainScreen] bounds];
         CGFloat width = CGRectGetWidth(screen);
-        width = width * arc4random_uniform(100) / 100; // need to be improved
-        gameObj.position = CGPointMake(width, 0.0f);
+        CGFloat height = CGRectGetHeight(screen);
+        width = arc4random_uniform(width); // need to be improved
+        CCLOG(@"position: %4.2f %4.2f ", width, height);
+        gameObj.position = CGPointMake(width, height);
     }
 }
 
 -(void) initSpeed{
     //set a random speed here
-    speed = 10 * arc4random_uniform(10);
+    speed = arc4random_uniform(10) + 1; // avoid 0 speed
     
-    if (gameObj != nil) {
-        float direction = arc4random_uniform(2);
-        if (direction != 1.0f) {
-            direction = -1.0f;
-        }
-        CGPoint itemOffset = CGPointMake(arc4random_uniform(10) * direction, speed);
-        gameObj.position = ccpAdd(gameObj.position, itemOffset);
-    }
+    [self schedule:@selector(move:) interval: 1.0f/60.0f];
 }
 
 -(BOOL) isDead {
@@ -81,6 +76,18 @@
 
 -(id) getItem {
     return gameObj;
+}
+
+-(void) move: (CCTime) delta{
+    if (gameObj != nil) {
+        float x_direction = arc4random_uniform(2);
+        if (x_direction != 1.0f) {
+            x_direction = -1.0f;
+        }
+        CGPoint force = CGPointMake(arc4random_uniform(5) * x_direction, speed * -1);
+//        [gameObj.physicsBody applyForce: force]; // give the item a speed
+        gameObj.position = ccpAdd(gameObj.position, force);
+    }
 }
 
 @end
