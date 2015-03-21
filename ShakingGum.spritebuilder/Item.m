@@ -41,11 +41,10 @@
     //init a random position here
     if (gameObj != nil) {
         CGRect screen = [[UIScreen mainScreen] bounds];
-        CGFloat width = CGRectGetWidth(screen);
+        CGFloat width = CGRectGetWidth(screen) / 2;
         CGFloat height = CGRectGetHeight(screen);
         width = arc4random_uniform(width); // need to be improved
-        CCLOG(@"position: %4.2f %4.2f ", width, height);
-        gameObj.position = CGPointMake(width, height);
+        gameObj.position = CGPointMake(width * [self getRandomDirection], height); // initial item position
     }
 }
 
@@ -53,7 +52,8 @@
     //set a random speed here
     speed = arc4random_uniform(10) + 1; // avoid 0 speed
     
-    [self schedule:@selector(move:) interval: 1.0f/60.0f];
+//    [self schedule:@selector(move:) interval: 1.0f/60.0f];
+    [self move];
 }
 
 -(BOOL) isDead {
@@ -70,6 +70,7 @@
     return NO;
 }
 
+// this item is killed
 -(void) killItem{
     isDead = YES;
 }
@@ -78,16 +79,27 @@
     return gameObj;
 }
 
--(void) move: (CCTime) delta{
+//-(void) move: (CCTime) delta{
+//    if (gameObj != nil) {
+//        CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
+//        gameObj.position = ccpAdd(gameObj.position, force);
+//    }
+//}
+
+-(void) move{
     if (gameObj != nil) {
-        float x_direction = arc4random_uniform(2);
-        if (x_direction != 1.0f) {
-            x_direction = -1.0f;
-        }
-        CGPoint force = CGPointMake(arc4random_uniform(5) * x_direction, speed * -1);
-//        [gameObj.physicsBody applyForce: force]; // give the item a speed
-        gameObj.position = ccpAdd(gameObj.position, force);
+        CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
+        [gameObj.physicsBody applyForce: force]; // give the item a speed, need to enable physics in spritbuilder
     }
+}
+
+//get 1 for right and -1 for left direction
+-(float) getRandomDirection{
+    float x_direction = arc4random_uniform(2);
+    if (x_direction != 1.0f) {
+        x_direction = -1.0f;
+    }
+    return x_direction;
 }
 
 @end

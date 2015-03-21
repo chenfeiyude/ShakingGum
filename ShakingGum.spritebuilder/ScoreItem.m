@@ -29,7 +29,7 @@
 
 -(void) crashing{
     // gum will be added score
-    
+    isDead = YES;
 }
 
 -(void) initStatus{

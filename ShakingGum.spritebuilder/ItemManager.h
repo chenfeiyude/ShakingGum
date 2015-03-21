@@ -12,11 +12,13 @@
 typedef NS_ENUM(NSInteger, ItemType) {
     BOMB,
     SCORE_ITEM,
-    NONE
+    NONE,
+    enum_count,
 };
 
 @interface ItemManager : NSObject {
     NSMutableArray * currentItems;
+    int maxItemSize;
 }
 
 +(id) getInstance; // this class is a singleton class  e.g ItemManager *sharedManager = [ItemManager getInstance];
@@ -24,7 +26,9 @@ typedef NS_ENUM(NSInteger, ItemType) {
 -(id) init;
 -(void) addItem: (Item *) item;
 -(void) deleteItem: (Item *) item;
+-(void) deleteDeadItems;
 -(void) clearItems;
 -(id) createItem: (ItemType) itemType;
 -(id) createRandomItem;
+-(NSMutableArray *) getAllItems;
 @end

@@ -13,5 +13,4 @@
     ItemManager *itemManager;
     CCNode * _physicsNode;
 }
-
 @end

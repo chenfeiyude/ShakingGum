@@ -19,6 +19,7 @@
     if (self)
     {
         currentItems = [NSMutableArray new];
+        maxItemSize  = 3;
     }
     
     return self;
@@ -34,7 +35,7 @@
 }
 
 -(void) addItem:(Item *)item{
-    if (item != nil) {
+    if (item != nil && currentItems.count <= maxItemSize) {
         [currentItems addObject:item];
     }
 }
@@ -50,41 +51,67 @@
     }
 }
 
+// delete all current items from the game
 -(void) clearItems{
-    if (currentItems != nil && currentItems.count != 0) {
+    if (currentItems != nil && currentItems.count > 0) {
         [currentItems removeAllObjects];
     }
 }
 
+//create an item with input type
 -(id) createItem:(ItemType)itemType{
-    switch (itemType) {
-        case BOMB:
-        {
-            Bomb *bomb = [[Bomb alloc] init];
-            [currentItems addObject: bomb];
-            return bomb;
+    if (currentItems != nil && currentItems.count <= maxItemSize) {
+        switch (itemType) {
+            case BOMB:
+            {
+                Bomb *bomb = [[Bomb alloc] init];
+                [currentItems addObject: bomb];
+                return bomb;
+            }
+            case SCORE_ITEM:
+            {
+                ScoreItem *scoreItem = [[ScoreItem alloc] init];
+                [currentItems addObject: scoreItem];
+                return scoreItem;
+            }
+            default:
+                return nil;
         }
-        case SCORE_ITEM:
-        {
-            ScoreItem *scoreItem = [[ScoreItem alloc] init];
-            [currentItems addObject: scoreItem];
-            return scoreItem;
-        }
-        default:
-            return nil;
     }
+    return nil;
 }
 
+//create an random item to the game
 -(id) createRandomItem{
-    int random = arc4random_uniform(1);
-    ItemType itemType = NONE;
-    if (random == 0) {
-        itemType = BOMB;
+    if (currentItems != nil && currentItems.count <= maxItemSize) {
+        int random = arc4random_uniform(maxItemSize);
+        ItemType itemType = NONE;
+        int range = maxItemSize / enum_count;
+        int bomb_range = range * ( BOMB + 1 ); // BOMB = 0 in enum set
+        int score_range = range * ( SCORE_ITEM + 1);
+        if (random <= bomb_range) {
+            itemType = BOMB;
+        }
+        else if (random > bomb_range && random <= score_range) {
+            itemType = SCORE_ITEM;
+        }
+        return [self createItem: itemType];
     }
-    else if (random == 1) {
-        itemType = SCORE_ITEM;
-    }
-    return [self createItem: itemType];
+    return nil;
 }
 
+-(NSMutableArray *) getAllItems {
+    return currentItems;
+}
+
+-(void) deleteDeadItems {
+    NSMutableArray * deadItems = [NSMutableArray new];
+    for (id item in currentItems) {
+        if ([item isDead] == YES) {
+            [deadItems addObject:item];
+        }
+    }
+    
+    [currentItems removeObjectsInArray:deadItems];
+}
 @end

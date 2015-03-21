@@ -30,7 +30,7 @@
 
 -(void) crashing{
     // gum will be dead
-    
+    isDead = YES;
 }
 
 -(void) initStatus{
