@@ -12,6 +12,8 @@
 @implementation Gameplay
 {
     Gum *_gum;
+    ItemManager *itemManager;
+    CCPhysicsNode * _physicsNode;
     
 }
 
@@ -20,16 +22,25 @@
 {
     self.userInteractionEnabled = TRUE;
     
+    _physicsNode.debugDraw = TRUE;
+    
     itemManager = [ItemManager getInstance];
     
     [self schedule:@selector(addItems:) interval:1];
 }
 
-// called on every touch in this scene
-- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    NSLog(@"Touched");
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    
+    // start Gum dragging when a touch insdie of the Gum body occurs
+    if (CGRectContainsPoint([_gum boundingBox], touchLocation))
+    {
+        NSLog(@"ztouched");
+    }
+    
 }
+
 
 // This method is running every frame
 - (void)update:(CCTime)delta {

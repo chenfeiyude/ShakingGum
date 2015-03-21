@@ -9,8 +9,5 @@
 #import "CCNode.h"
 #import "ItemManager.h"
 
-@interface Gameplay : CCNode {
-    ItemManager *itemManager;
-    CCNode * _physicsNode;
-}
+@interface Gameplay : CCNode 
 @end

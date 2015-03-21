@@ -17,7 +17,7 @@
     
     if (self)
     {
-        CCLOG(@"Item created");
+//        CCLOG(@"Item created");
         status = [[Status alloc] init];
         [self initSpeed];
         isDead = NO;

@@ -16,7 +16,7 @@
     
     if (self)
     {
-        CCLOG(@"ScoreItem created");
+//        CCLOG(@"ScoreItem created");
         [self initStatus];
         gameObj = [CCBReader load:@"ScoreItem"];
         [self initPosition];

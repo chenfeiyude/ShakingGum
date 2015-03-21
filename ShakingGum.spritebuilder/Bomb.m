@@ -17,7 +17,7 @@
     
     if (self)
     {
-        CCLOG(@"Bomb created");
+//        CCLOG(@"Bomb created");
         [self initStatus];
         gameObj = [CCBReader load:@"Bomb"];
         [self initPosition];
