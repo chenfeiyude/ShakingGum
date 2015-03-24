@@ -12,14 +12,20 @@
 @implementation Gameplay
 {
     Gum *_gum;
+    
     ItemManager *itemManager;
     CCPhysicsNode * _physicsNode;
     
 }
 
+
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB
 {
+    
+    _gum = (Gum *)[CCBReader load: @"Gum"];
+    
+    
     self.userInteractionEnabled = TRUE;
     
     _physicsNode.debugDraw = TRUE;
@@ -27,16 +33,22 @@
     itemManager = [ItemManager getInstance];
     
     [self schedule:@selector(addItems:) interval:1];
+    
 }
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [touch locationInView:touch.view];
     
+    NSLog(@"Touch location: %@", NSStringFromCGPoint(touchLocation));
+    NSLog(@"Gum Head location: %@", NSStringFromCGRect([[_gum getGumHead] boundingBox]));
+    NSLog(@"Gum Body location: %@", NSStringFromCGRect([[_gum getGumBody] boundingBox]));
+    NSLog(@"Gum Base location: %@", NSStringFromCGRect([[_gum getGumBase] boundingBox]));
+    
     // start Gum dragging when a touch insdie of the Gum body occurs
-    if (CGRectContainsPoint([_gum boundingBox], touchLocation))
+    if (CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
     {
-        NSLog(@"ztouched");
+        NSLog(@"Gum head touched");
     }
     
 }

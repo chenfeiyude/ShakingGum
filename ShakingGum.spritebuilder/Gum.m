@@ -9,6 +9,11 @@
 #import "Gum.h"
 
 @implementation Gum
+{
+    CCNode *_gumHead;
+    CCNode *_gumBody;
+    CCNode *_gumBase;
+}
 
 -(id)init{
     self = [super init];
@@ -19,6 +24,22 @@
     }
     
     return self;
+}
+
+
+-(CCNode *)getGumHead
+{
+    return _gumHead;
+}
+
+-(CCNode *)getGumBody
+{
+    return _gumBody; 
+}
+
+-(CCNode *)getGumBase
+{
+    return _gumBase;
 }
 
 @end

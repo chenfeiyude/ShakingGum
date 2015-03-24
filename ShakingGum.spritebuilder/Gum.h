@@ -10,4 +10,8 @@
 
 @interface Gum : CCSprite
 
+-(CCNode *)getGumHead;
+-(CCNode *)getGumBody;
+-(CCNode *)getGumBase;
+
 @end

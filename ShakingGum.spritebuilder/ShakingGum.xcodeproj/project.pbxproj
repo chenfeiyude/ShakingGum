@@ -95,7 +95,7 @@
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
 		F01FBD5F1AB641DC006F762F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = F01FBD5E1AB641DC006F762F /* Gameplay.m */; };
-		F08A9F861ABDABBA0077534B /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F08A9F851ABDABBA0077534B /* Gum.m */; };
+		F028EB831AC22B190061D2FA /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F028EB821AC22B190061D2FA /* Gum.m */; };
 		FAD934F61ABA3BD80050B39E /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934F51ABA3BD80050B39E /* Item.m */; };
 		FAD934FB1ABA3CD00050B39E /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934FA1ABA3CD00050B39E /* Status.m */; };
 		FAD934FE1ABA576B0050B39E /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934FD1ABA576B0050B39E /* Bomb.m */; };
@@ -222,8 +222,8 @@
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 		F01FBD5D1AB641DC006F762F /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		F01FBD5E1AB641DC006F762F /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
-		F08A9F841ABDABBA0077534B /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gum.h; sourceTree = "<group>"; };
-		F08A9F851ABDABBA0077534B /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
+		F028EB811AC22B190061D2FA /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gum.h; sourceTree = "<group>"; };
+		F028EB821AC22B190061D2FA /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
 		FAD934F41ABA3BD80050B39E /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		FAD934F51ABA3BD80050B39E /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		FAD934F91ABA3CD00050B39E /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
@@ -463,8 +463,8 @@
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
-				F08A9F841ABDABBA0077534B /* Gum.h */,
-				F08A9F851ABDABBA0077534B /* Gum.m */,
+				F028EB811AC22B190061D2FA /* Gum.h */,
+				F028EB821AC22B190061D2FA /* Gum.m */,
 				FAD934F41ABA3BD80050B39E /* Item.h */,
 				FAD934F51ABA3BD80050B39E /* Item.m */,
 				FAD934F91ABA3CD00050B39E /* Status.h */,
@@ -858,7 +858,7 @@
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				FAF579BD1ABB7AE300879760 /* ItemManager.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
-				F08A9F861ABDABBA0077534B /* Gum.m in Sources */,
+				F028EB831AC22B190061D2FA /* Gum.m in Sources */,
 				FAD935011ABA57A30050B39E /* ScoreItem.m in Sources */,
 				FAD934FB1ABA3CD00050B39E /* Status.m in Sources */,
 			);
