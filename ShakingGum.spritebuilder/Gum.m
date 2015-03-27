@@ -15,6 +15,7 @@
     CCNode *_gumBase;
 }
 
+
 -(id)init{
     self = [super init];
     
@@ -26,7 +27,6 @@
     return self;
 }
 
-
 -(CCNode *)getGumHead
 {
     return _gumHead;
@@ -34,12 +34,15 @@
 
 -(CCNode *)getGumBody
 {
-    return _gumBody; 
+    return _gumBody;
 }
 
 -(CCNode *)getGumBase
 {
     return _gumBase;
 }
+
+
+
 
 @end

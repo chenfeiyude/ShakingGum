@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>8</integer>
+	<integer>11</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -33,7 +33,7 @@
 	<array>
 		<dict>
 			<key>UUID</key>
-			<integer>6</integer>
+			<integer>8</integer>
 			<key>baseClass</key>
 			<string>CCPhysicsPivotJoint</string>
 			<key>children</key>
@@ -55,8 +55,8 @@
 					<string>Position</string>
 					<key>value</key>
 					<array>
-						<real>0.999969482421875</real>
-						<real>17.999984741210938</real>
+						<real>0.0</real>
+						<real>351.45489501953125</real>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -93,8 +93,8 @@
 					<string>Point</string>
 					<key>value</key>
 					<array>
-						<real>13.999969482421875</real>
-						<real>-6.5000152587890625</real>
+						<real>26.5</real>
+						<real>-13.04510498046875</real>
 					</array>
 				</dict>
 				<dict>
@@ -142,7 +142,7 @@
 		</dict>
 		<dict>
 			<key>UUID</key>
-			<integer>7</integer>
+			<integer>9</integer>
 			<key>baseClass</key>
 			<string>CCPhysicsPivotJoint</string>
 			<key>children</key>
@@ -164,8 +164,8 @@
 					<string>Position</string>
 					<key>value</key>
 					<array>
-						<real>1.070281982421875</real>
-						<real>-103.1171875</real>
+						<real>0.0</real>
+						<real>105.24852752685547</real>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -202,8 +202,8 @@
 					<string>Point</string>
 					<key>value</key>
 					<array>
-						<real>14.070281982421875</real>
-						<real>-6.6171875</real>
+						<real>26.5</real>
+						<real>-16.251472473144531</real>
 					</array>
 				</dict>
 				<dict>
@@ -305,14 +305,14 @@
 						</array>
 						<array>
 							<real>0.0</real>
-							<real>121</real>
+							<real>243</real>
 						</array>
 						<array>
-							<real>26</real>
-							<real>121</real>
+							<real>53</real>
+							<real>243</real>
 						</array>
 						<array>
-							<real>26</real>
+							<real>53</real>
 							<real>0.0</real>
 						</array>
 					</array>
@@ -320,16 +320,16 @@
 					<array>
 						<array>
 							<array>
-								<real>26</real>
+								<real>53</real>
 								<real>0.0</real>
 							</array>
 							<array>
-								<real>26</real>
-								<real>121</real>
+								<real>53</real>
+								<real>243</real>
 							</array>
 							<array>
 								<real>0.0</real>
-								<real>121</real>
+								<real>243</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -356,7 +356,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-157</real>
+							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -478,14 +478,14 @@
 						</array>
 						<array>
 							<real>0.0</real>
-							<real>121</real>
+							<real>243</real>
 						</array>
 						<array>
-							<real>26</real>
-							<real>121</real>
+							<real>53</real>
+							<real>243</real>
 						</array>
 						<array>
-							<real>26</real>
+							<real>53</real>
 							<real>0.0</real>
 						</array>
 					</array>
@@ -493,16 +493,16 @@
 					<array>
 						<array>
 							<array>
-								<real>26</real>
+								<real>53</real>
 								<real>0.0</real>
 							</array>
 							<array>
-								<real>26</real>
-								<real>121</real>
+								<real>53</real>
+								<real>243</real>
 							</array>
 							<array>
 								<real>0.0</real>
-								<real>121</real>
+								<real>243</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -529,7 +529,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-36</real>
+							<real>243</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -651,14 +651,14 @@
 						</array>
 						<array>
 							<real>0.0</real>
-							<real>121</real>
+							<real>243</real>
 						</array>
 						<array>
-							<real>26</real>
-							<real>121</real>
+							<real>53</real>
+							<real>243</real>
 						</array>
 						<array>
-							<real>26</real>
+							<real>53</real>
 							<real>0.0</real>
 						</array>
 					</array>
@@ -666,16 +666,16 @@
 					<array>
 						<array>
 							<array>
-								<real>26</real>
+								<real>53</real>
 								<real>0.0</real>
 							</array>
 							<array>
-								<real>26</real>
-								<real>121</real>
+								<real>53</real>
+								<real>243</real>
 							</array>
 							<array>
 								<real>0.0</real>
-								<real>121</real>
+								<real>243</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -702,7 +702,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>85</real>
+							<real>486</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>

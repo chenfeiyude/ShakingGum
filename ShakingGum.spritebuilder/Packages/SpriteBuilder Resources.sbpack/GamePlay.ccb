@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>51</integer>
+	<integer>61</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,24 +41,24 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>50</integer>
+				<integer>53</integer>
 				<key>baseClass</key>
-				<string>CCPhysicsNode</string>
+				<string>CCNode</string>
 				<key>children</key>
 				<array>
 					<dict>
 						<key>UUID</key>
-						<integer>49</integer>
+						<integer>50</integer>
 						<key>baseClass</key>
-						<string>CCBFile</string>
+						<string>CCPhysicsNode</string>
 						<key>children</key>
 						<array/>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>Gum</string>
+						<string>CCPhysicsNode</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_physicsNode</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -78,11 +78,35 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>164</real>
-									<real>-204</real>
-									<integer>1</integer>
+									<real>0.0</real>
+									<real>0.0</real>
 									<integer>0</integer>
 									<integer>0</integer>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>contentSize</string>
+								<key>type</key>
+								<string>Size</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>0.0</real>
+									<integer>0</integer>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -100,11 +124,22 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>ccbFile</string>
+								<string>gravity</string>
 								<key>type</key>
-								<string>CCBFile</string>
+								<string>Point</string>
 								<key>value</key>
-								<string>Gum.ccb</string>
+								<array>
+									<real>0.0</real>
+									<real>-100</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>sleepTimeThreshold</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.5</real>
 							</dict>
 						</array>
 					</dict>
@@ -112,9 +147,9 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCPhysicsNode</string>
+				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>_physicsNode</string>
+				<string>_contentNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -177,25 +212,6 @@
 							<false/>
 							<integer>0</integer>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>gravity</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>-100</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>sleepTimeThreshold</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.5</real>
 					</dict>
 				</array>
 			</dict>
@@ -270,8 +286,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
