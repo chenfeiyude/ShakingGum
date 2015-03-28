@@ -17,20 +17,20 @@
     
     if (self)
     {
-//        CCLOG(@"Item created");
         status = [[Status alloc] init];
         [self initSpeed];
         isDead = NO;
-        //need to init a gameobj in child classes
-        //e.g gameObj = [CCBReader load:@"Bomb"];
+        //need to load the obj in child classes
+        //e.g [self addChild:[CCBReader load:@"Bomb"]];
         
     }
     
     return self;
 }
 
--(void) crashing{
+-(id) crashing{
     [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
 
 -(void) initStatus{
@@ -39,20 +39,16 @@
 
 -(void) initPosition{
     //init a random position here
-    if (gameObj != nil) {
-        CGRect screen = [[UIScreen mainScreen] bounds];
-        CGFloat width = CGRectGetWidth(screen) / 2;
-        CGFloat height = CGRectGetHeight(screen);
-        width = arc4random_uniform(width); // need to be improved
-        gameObj.position = CGPointMake(width * [self getRandomDirection], height); // initial item position
-    }
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat width = CGRectGetWidth(screen) / 2;
+    CGFloat height = CGRectGetHeight(screen);
+    width = arc4random_uniform(width); // need to be improved
+    self.position = CGPointMake(width * [self getRandomDirection], height); // initial item position
 }
 
 -(void) initSpeed{
     //set a random speed here
     speed = arc4random_uniform(10) + 1; // avoid 0 speed
-    
-//    [self schedule:@selector(move:) interval: 1.0f/60.0f];
     [self move];
 }
 
@@ -60,12 +56,10 @@
     if (isDead) {
         return YES;
     }
-    if (gameObj != nil) {
-        CGRect screen = [[UIScreen mainScreen] bounds];
-        if (gameObj.position.y >= CGRectGetHeight(screen)) {
-            //this item is out of screen
-            return YES;
-        }
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    if (self.position.y >= CGRectGetHeight(screen)) {
+        //this item is out of screen
+        return YES;
     }
     return NO;
 }
@@ -73,24 +67,12 @@
 // this item is killed
 -(void) killItem{
     isDead = YES;
+    [self removeFromParentAndCleanup:YES];
 }
-
--(id) getItem {
-    return gameObj;
-}
-
-//-(void) move: (CCTime) delta{
-//    if (gameObj != nil) {
-//        CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
-//        gameObj.position = ccpAdd(gameObj.position, force);
-//    }
-//}
 
 -(void) move{
-    if (gameObj != nil) {
-        CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
-        [gameObj.physicsBody applyForce: force]; // give the item a speed, need to enable physics in spritbuilder
-    }
+    CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
+    [self.physicsBody applyForce: force]; // give the item a speed, need to enable physics in spritbuilder
 }
 
 //get 1 for right and -1 for left direction
@@ -100,6 +82,10 @@
         x_direction = -1.0f;
     }
     return x_direction;
+}
+
+-(id) getStatus {
+    return status;
 }
 
 @end

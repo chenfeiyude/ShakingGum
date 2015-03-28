@@ -59,19 +59,23 @@
     // do every thing for the items here
     NSMutableArray * currentItems = [itemManager getAllItems];
     
-    for (id item in currentItems) {
+    for (Item* item in currentItems) {
         
         //check crashing here --------------------
-//        [item crashing];// show the item crashing effect
-//        [item getStatus];// add status to gum
+        if (CGRectIntersectsRect(item.boundingBox, [[_gum getGumHead] boundingBox]))
+        {
+            CCParticleSystem *exploding = [item crashing];
+            [self addChild:exploding];
+            
+            [item getStatus];// add status to gum
+        }
         //----------------------------------------
         
         //check dead items here -------------------
-        CCNode * obj = [item getItem];
-        if (obj.position.y <= 0) {
+        if (item.position.y <= 0) {
             //delete all items out of screen
             [item killItem];
-            [_physicsNode removeChild:obj];
+            [self removeChild:item];
         }
         //-----------------------------------------
     }
@@ -82,9 +86,9 @@
 
 -(void) addItems:(CCTime)delta {
     //create items
-    CCNode * newItem = [[itemManager createRandomItem] getItem];
+    id newItem = [itemManager createRandomItem];
     if (newItem != nil) {
-        [_physicsNode addChild: newItem];
+        [_physicsNode addChild:newItem];
     }
 }
 

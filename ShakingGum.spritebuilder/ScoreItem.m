@@ -16,9 +16,8 @@
     
     if (self)
     {
-//        CCLOG(@"ScoreItem created");
         [self initStatus];
-        gameObj = [CCBReader load:@"ScoreItem"];
+        [self addChild:[CCBReader load:@"ScoreItem"]];
         [self initPosition];
         [self initSpeed];
     }
@@ -27,9 +26,13 @@
 }
 
 
--(void) crashing{
+-(id) crashing{
     // gum will be added score
     isDead = YES;
+    CCParticleSystem *exploding = (CCParticleSystem *)[CCBReader load:@"exploding"];
+    exploding.position = self.position;
+    exploding.autoRemoveOnFinish = TRUE;
+    return exploding;
 }
 
 -(void) initStatus{

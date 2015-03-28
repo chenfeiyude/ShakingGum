@@ -19,7 +19,7 @@
     {
 //        CCLOG(@"Bomb created");
         [self initStatus];
-        gameObj = [CCBReader load:@"Bomb"];
+        [self addChild:[CCBReader load:@"Bomb"]];
         [self initPosition];
         [self initSpeed];
     }
@@ -28,9 +28,14 @@
 }
 
 
--(void) crashing{
+-(id) crashing{
     // gum will be dead
     isDead = YES;
+    CCParticleSystem *exploding = (CCParticleSystem *)[CCBReader load:@"exploding"];
+    exploding.position = self.position;
+    exploding.autoRemoveOnFinish = YES;
+    exploding.visible = YES;
+    return exploding;
 }
 
 -(void) initStatus{
