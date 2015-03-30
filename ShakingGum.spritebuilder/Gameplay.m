@@ -20,7 +20,6 @@
     
     ItemManager *itemManager;
     
-    CCNode *_contentNode;
     CCPhysicsNode * _physicsNode;
 }
 
@@ -31,10 +30,12 @@
  
     self.userInteractionEnabled = TRUE;
     
+    // initialise Gum in GamePlay scene
     _gum = (Gum *)[CCBReader load:@"Gum"];
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     _gum.position = CGPointMake(screenSize.width/2, 0);
     _gum.scale = (0.3);
+    
     [_physicsNode addChild:_gum];
     
     _physicsNode.debugDraw = TRUE;
@@ -46,33 +47,25 @@
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint touchLocation = [touch locationInNode:_contentNode];
-//    CGPoint gumLocation = [_gum convertToWorldSpace: _gum.position];
-    
-//    CGPoint gumHeadLocation = [[_gum getGumHead] convertToWorldSpace: [_gum getGumHead].position];
-//    CGPoint gumBodyLocation = [[_gum getGumBody] convertToWorldSpace: [_gum getGumBody].position];
-//    CGPoint gumBaseLocation = [[_gum getGumBase] convertToWorldSpace: [_gum getGumBase].position];
+    CGPoint touchLocation = [touch locationInNode:_gum];
 
-    
     NSLog(@"Touch location: %@", NSStringFromCGPoint(touchLocation));
-//    NSLog(@"Gum location: %@", NSStringFromCGPoint(gumLocation));
-//    NSLog(@"GumHead location: %@", NSStringFromCGPoint(gumHeadLocation));
-//    NSLog(@"GumBody location: %@", NSStringFromCGPoint(gumBodyLocation));
-//    NSLog(@"GumBase location: %@", NSStringFromCGPoint(gumBaseLocation));
-     NSLog(@"Gum: %@", NSStringFromCGRect([_gum boundingBox]));
-     NSLog(@"GumHead: %@", NSStringFromCGRect([[_gum getGumHead] boundingBox]));
-
-
-
-  
-    
-    
+   
     // start Gum dragging when a touch insdie of the Gum body occurs
-    if (CGRectContainsPoint([_gum boundingBox], touchLocation))
+    if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation))
     {
-        NSLog(@"Gum touched");
+        NSLog(@"GumHead touched");
     }
     
+    if(CGRectContainsPoint([[_gum getGumBody] boundingBox], touchLocation))
+    {
+        NSLog(@"GumBody touched");
+    }
+    
+    if(CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
+    {
+        NSLog(@"GumBase touched");
+    }
 }
 
 
@@ -87,12 +80,12 @@
             //check crashing here --------------------
             if (CGRectIntersectsRect(item.boundingBox, [[_gum getGumHead] boundingBox]))
             {
-                NSLog(@"crashing");
+                //            NSLog(@"crashing");
                 //            CCParticleSystem *exploding = [item crashing];
                 //            [self addChild:exploding];
                 //
                 //            [item getStatus];// add status to gum
-                [item removeFromParentAndCleanup:YES];
+//                [item removeFromParentAndCleanup:YES];
             }
             //----------------------------------------
             
