@@ -9,6 +9,10 @@
 #import "Gameplay.h"
 #import "UITouch+CC.h"
 #import "Gum.h"
+#import "ItemManager.h"
+#import "Item.h"
+#import "Bomb.h"
+#import "ScoreItem.h"
 
 @implementation Gameplay
 {
@@ -18,7 +22,6 @@
     
     CCNode *_contentNode;
     CCPhysicsNode * _physicsNode;
-    
 }
 
 
@@ -28,14 +31,13 @@
  
     self.userInteractionEnabled = TRUE;
     
-    _gum = (Gum *)[CCBReader load:@"Gum"];;
+    _gum = (Gum *)[CCBReader load:@"Gum"];
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     _gum.position = CGPointMake(screenSize.width/2, 0);
     _gum.scale = (0.3);
     [_physicsNode addChild:_gum];
     
     _physicsNode.debugDraw = TRUE;
-    
     itemManager = [ItemManager getInstance];
     
     [self schedule:@selector(addItems:) interval:1];
@@ -77,27 +79,32 @@
 // This method is running every frame
 - (void)update:(CCTime)delta {
     // do every thing for the items here
-    NSMutableArray * currentItems = [itemManager getAllItems];
+//    NSMutableArray * currentItems = [itemManager getAllItems];
     
-    for (Item* item in currentItems) {
-        
-        //check crashing here --------------------
-        if (CGRectIntersectsRect(item.boundingBox, [[_gum getGumHead] boundingBox]))
-        {
-            CCParticleSystem *exploding = [item crashing];
-            [self addChild:exploding];
+    for (id obj in _physicsNode.children) {
+        if ([obj isKindOfClass:[Item class]]) {
+            Item* item = (Item* ) obj;
+            //check crashing here --------------------
+            if (CGRectIntersectsRect(item.boundingBox, [[_gum getGumHead] boundingBox]))
+            {
+                NSLog(@"crashing");
+                //            CCParticleSystem *exploding = [item crashing];
+                //            [self addChild:exploding];
+                //
+                //            [item getStatus];// add status to gum
+                [item removeFromParentAndCleanup:YES];
+            }
+            //----------------------------------------
             
-            [item getStatus];// add status to gum
+            //check dead items here -------------------
+            if (item.position.y <= 0) {
+                //delete all items out of screen
+                [item killItem];
+                [item removeFromParentAndCleanup:YES];
+            }
+            //-----------------------------------------
         }
-        //----------------------------------------
         
-        //check dead items here -------------------
-        if (item.position.y <= 0) {
-            //delete all items out of screen
-            [item killItem];
-            [self removeChild:item];
-        }
-        //-----------------------------------------
     }
 
     

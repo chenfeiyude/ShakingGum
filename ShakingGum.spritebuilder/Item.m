@@ -40,10 +40,10 @@
 -(void) initPosition{
     //init a random position here
     CGRect screen = [[UIScreen mainScreen] bounds];
-    CGFloat width = CGRectGetWidth(screen) / 2;
+    CGFloat width = CGRectGetWidth(screen);
     CGFloat height = CGRectGetHeight(screen);
     width = arc4random_uniform(width); // need to be improved
-    self.position = CGPointMake(width * [self getRandomDirection], height); // initial item position
+    self.position = CGPointMake(width, height); // initial item position
 }
 
 -(void) initSpeed{
