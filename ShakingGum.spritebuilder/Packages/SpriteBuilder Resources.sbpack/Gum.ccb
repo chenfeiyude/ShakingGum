@@ -121,6 +121,14 @@
 				</dict>
 				<dict>
 					<key>name</key>
+					<string>dampedSpringRestAngle</string>
+					<key>type</key>
+					<string>Degrees</string>
+					<key>value</key>
+					<real>80</real>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>dampedSpringStiffness</string>
 					<key>type</key>
 					<string>Float</string>
@@ -139,6 +147,8 @@
 					</array>
 				</dict>
 			</array>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>UUID</key>
@@ -227,6 +237,14 @@
 						<real>100</real>
 						<false/>
 					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>dampedSpringRestAngle</string>
+					<key>type</key>
+					<string>Degrees</string>
+					<key>value</key>
+					<real>80</real>
 				</dict>
 				<dict>
 					<key>name</key>

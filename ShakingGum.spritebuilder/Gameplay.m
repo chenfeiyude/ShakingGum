@@ -51,7 +51,7 @@
 
     NSLog(@"Touch location: %@", NSStringFromCGPoint(touchLocation));
    
-    // start Gum dragging when a touch insdie of the Gum body occurs
+    // when a touch insdie of the Gum body occurs
     if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation))
     {
         NSLog(@"GumHead touched");
@@ -65,6 +65,26 @@
     if(CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
     {
         NSLog(@"GumBase touched");
+    }
+}
+
+-(void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event
+{
+    CGPoint touchLocation = [touch locationInNode:_gum];
+    
+    // start Gum dragging when a touch insdie of the Gum body occurs
+    if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation))
+    {
+        [_gum getGumHead].position = touchLocation;
+    }
+    
+    if(CGRectContainsPoint([[_gum getGumBody] boundingBox], touchLocation))
+    {
+        [_gum getGumBody].position = touchLocation;
+    }
+    
+    if(CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
+    {
     }
 }
 
