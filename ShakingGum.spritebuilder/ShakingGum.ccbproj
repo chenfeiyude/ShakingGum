@@ -84,8 +84,6 @@
 		<dict>
 			<key>isSmartSpriteSheet</key>
 			<true/>
-			<key>trimSprites</key>
-			<true/>
 		</dict>
 		<key>Sprites</key>
 		<dict/>

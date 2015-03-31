@@ -34,7 +34,8 @@
     _gum = (Gum *)[CCBReader load:@"Gum"];
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     _gum.position = CGPointMake(screenSize.width/2, 0);
-    _gum.scale = (0.3);
+    
+    _gum.scale = (0.5);
     
     [_physicsNode addChild:_gum];
     
@@ -100,12 +101,15 @@
             //check crashing here --------------------
             if (CGRectIntersectsRect(item.boundingBox, [[_gum getGumHead] boundingBox]))
             {
-                //            NSLog(@"crashing");
-                //            CCParticleSystem *exploding = [item crashing];
-                //            [self addChild:exploding];
+                NSLog(@"crashing");
+                CCParticleSystem *exploding = [item crashing];
+                exploding.position = item.boundingBox.origin;
+                [self addChild:exploding];
                 //
                 //            [item getStatus];// add status to gum
-//                [item removeFromParentAndCleanup:YES];
+                [item killItem];
+                [item removeFromParentAndCleanup:YES];
+                break;
             }
             //----------------------------------------
             
@@ -114,6 +118,7 @@
                 //delete all items out of screen
                 [item killItem];
                 [item removeFromParentAndCleanup:YES];
+                break;
             }
             //-----------------------------------------
         }
