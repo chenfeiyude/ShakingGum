@@ -457,24 +457,13 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F02681601ACC02B5006DECD1 /* Model */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				F01FBD5D1AB641DC006F762F /* Gameplay.h */,
 				F01FBD5E1AB641DC006F762F /* Gameplay.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
-				F028EB811AC22B190061D2FA /* Gum.h */,
-				F028EB821AC22B190061D2FA /* Gum.m */,
-				FAD934F41ABA3BD80050B39E /* Item.h */,
-				FAD934F51ABA3BD80050B39E /* Item.m */,
-				FAD934F91ABA3CD00050B39E /* Status.h */,
-				FAD934FA1ABA3CD00050B39E /* Status.m */,
-				FAD934FC1ABA576B0050B39E /* Bomb.h */,
-				FAD934FD1ABA576B0050B39E /* Bomb.m */,
-				FAD934FF1ABA57A30050B39E /* ScoreItem.h */,
-				FAD935001ABA57A30050B39E /* ScoreItem.m */,
-				FAF579BB1ABB7AE300879760 /* ItemManager.h */,
-				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -572,6 +561,25 @@
 				B73789861807631A0076A88C /* Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F02681601ACC02B5006DECD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F028EB811AC22B190061D2FA /* Gum.h */,
+				F028EB821AC22B190061D2FA /* Gum.m */,
+				FAD934F41ABA3BD80050B39E /* Item.h */,
+				FAD934F51ABA3BD80050B39E /* Item.m */,
+				FAD934F91ABA3CD00050B39E /* Status.h */,
+				FAD934FA1ABA3CD00050B39E /* Status.m */,
+				FAD934FC1ABA576B0050B39E /* Bomb.h */,
+				FAD934FD1ABA576B0050B39E /* Bomb.m */,
+				FAD934FF1ABA57A30050B39E /* ScoreItem.h */,
+				FAD935001ABA57A30050B39E /* ScoreItem.m */,
+				FAF579BB1ABB7AE300879760 /* ItemManager.h */,
+				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
