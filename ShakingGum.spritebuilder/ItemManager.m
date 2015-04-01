@@ -107,8 +107,10 @@
 -(void) deleteDeadItems {
     NSMutableArray * deadItems = [NSMutableArray new];
     for (id item in currentItems) {
-        if ([item isDead] == YES) {
+        
+        if ([item isDead]) {
             [deadItems addObject:item];
+            [item removeFromParentAndCleanup:YES];
         }
     }
     

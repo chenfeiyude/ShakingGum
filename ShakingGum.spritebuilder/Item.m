@@ -53,21 +53,12 @@
 }
 
 -(BOOL) isDead {
-    if (isDead) {
-        return YES;
-    }
-    CGRect screen = [[UIScreen mainScreen] bounds];
-    if (self.position.y >= CGRectGetHeight(screen)) {
-        //this item is out of screen
-        return YES;
-    }
-    return NO;
+    return isDead;
 }
 
 // this item is killed
 -(void) killItem{
     isDead = YES;
-    [self removeFromParentAndCleanup:YES];
 }
 
 -(void) move{

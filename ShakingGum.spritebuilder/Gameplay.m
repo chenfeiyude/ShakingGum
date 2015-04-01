@@ -149,35 +149,38 @@
     for (id obj in _physicsNode.children) {
         if ([obj isKindOfClass:[Item class]]) {
             Item* item = (Item* ) obj;
-            
-            //check crashing here --------------------
-            if (CGRectIntersectsRect(item.boundingBox, [[_gum getGumHead] boundingBox]))
-            {
-                NSLog(@"crashing");
+            for (CCNode * itemObj in item.children) {
+                CGRect itemObjBoundingbox = itemObj.boundingBox;
+                itemObjBoundingbox.origin = [item convertToWorldSpace:itemObj.position];
+                CGRect headBoundingbox = [[_gum getGumHead] boundingBox];
+                headBoundingbox.origin = [_gum convertToWorldSpace:[_gum getGumHead].position];
+                //check crashing here --------------------
+                if (CGRectIntersectsRect(itemObjBoundingbox, headBoundingbox))
+                {
                 
-                CCParticleSystem *exploding = [item crashing];
-                exploding.position = [_gum convertToWorldSpace:item.position];
+                    //should have only one obj in an item
+                    
+                    NSLog(@"crashing");
+                    
+                    CCParticleSystem *exploding = [item crashing];
+                    
+                    exploding.position = [item convertToWorldSpace:itemObj.position];
+                    
+                    [self addChild:exploding];
+                    //
+                    //[item getStatus];// add status to gum
+                    [item killItem];
+                    [self updateScore];
+                }
                 
-                [self addChild:exploding];
-                //
-                //            [item getStatus];// add status to gum
-                [item killItem];
-                [item removeFromParentAndCleanup:YES];
-                
-                [self updateScore];
-                
-                break;
+                //check dead items here -------------------
+                if ([item convertToWorldSpace:itemObj.position].y <= 0) {
+                    //delete all items out of screen
+                    [item killItem];
+                }
+
             }
-            //----------------------------------------
-            
-            //check dead items here -------------------
-            if (item.position.y <= 0) {
-                //delete all items out of screen
-                [item killItem];
-                [item removeFromParentAndCleanup:YES];
-                break;
-            }
-            //-----------------------------------------
+
         }
         
     }
