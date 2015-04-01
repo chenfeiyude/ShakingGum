@@ -121,6 +121,22 @@
 				</dict>
 				<dict>
 					<key>name</key>
+					<string>dampedSpringEnabled</string>
+					<key>type</key>
+					<string>Check</string>
+					<key>value</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>dampedSpringRestAngle</string>
+					<key>type</key>
+					<string>Degrees</string>
+					<key>value</key>
+					<real>39.950550079345703</real>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>dampedSpringStiffness</string>
 					<key>type</key>
 					<string>Float</string>
@@ -230,6 +246,22 @@
 				</dict>
 				<dict>
 					<key>name</key>
+					<string>dampedSpringEnabled</string>
+					<key>type</key>
+					<string>Check</string>
+					<key>value</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>dampedSpringRestAngle</string>
+					<key>type</key>
+					<string>Degrees</string>
+					<key>value</key>
+					<real>-54.798786163330078</real>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>dampedSpringStiffness</string>
 					<key>type</key>
 					<string>Float</string>
@@ -248,8 +280,6 @@
 					</array>
 				</dict>
 			</array>
-			<key>selected</key>
-			<true/>
 		</dict>
 	</array>
 	<key>jsControlled</key>
