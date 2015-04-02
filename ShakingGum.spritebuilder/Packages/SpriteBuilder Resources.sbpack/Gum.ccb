@@ -55,8 +55,8 @@
 					<string>Position</string>
 					<key>value</key>
 					<array>
-						<real>-0.016119649633765221</real>
-						<real>426.07992553710938</real>
+						<real>7.152557373046875e-07</real>
+						<real>423.59921264648438</real>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -93,8 +93,8 @@
 					<string>Point</string>
 					<key>value</key>
 					<array>
-						<real>26.48046875</real>
-						<real>1.90233314037323</real>
+						<real>26.5</real>
+						<real>-2.3990204334259033</real>
 					</array>
 				</dict>
 				<dict>
@@ -121,6 +121,14 @@
 				</dict>
 				<dict>
 					<key>name</key>
+					<string>referenceAngle</string>
+					<key>type</key>
+					<string>Degrees</string>
+					<key>value</key>
+					<real>1</real>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>dampedSpringEnabled</string>
 					<key>type</key>
 					<string>Check</string>
@@ -133,7 +141,7 @@
 					<key>type</key>
 					<string>Degrees</string>
 					<key>value</key>
-					<real>39.950550079345703</real>
+					<real>90</real>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -162,15 +170,9 @@
 						<false/>
 					</array>
 				</dict>
-				<dict>
-					<key>name</key>
-					<string>layoutType</string>
-					<key>type</key>
-					<string>Byte</string>
-					<key>value</key>
-					<integer>1</integer>
-				</dict>
 			</array>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>UUID</key>
@@ -274,7 +276,7 @@
 					<key>type</key>
 					<string>Degrees</string>
 					<key>value</key>
-					<real>-54.798786163330078</real>
+					<real>90</real>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -651,8 +653,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -711,28 +711,14 @@
 							<real>53</real>
 							<real>0.0</real>
 						</array>
-						<array>
-							<real>27.200448989868164</real>
-							<real>5.94281005859375</real>
-						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>27.200448989868164</real>
-								<real>5.94281005859375</real>
-							</array>
-							<array>
 								<real>53</real>
 								<real>0.0</real>
 							</array>
-							<array>
-								<real>53</real>
-								<real>243</real>
-							</array>
-						</array>
-						<array>
 							<array>
 								<real>53</real>
 								<real>243</real>
@@ -744,10 +730,6 @@
 							<array>
 								<real>0.0</real>
 								<real>0.0</real>
-							</array>
-							<array>
-								<real>27.200448989868164</real>
-								<real>5.94281005859375</real>
 							</array>
 						</array>
 					</array>

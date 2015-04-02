@@ -9,5 +9,5 @@
 #import "CCNode.h"
 
 
-@interface Gameplay : CCNode<CCPhysicsCollisionDelegate>
+@interface Gameplay : CCNode
 @end
