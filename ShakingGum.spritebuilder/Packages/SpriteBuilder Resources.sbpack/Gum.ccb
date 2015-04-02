@@ -55,8 +55,8 @@
 					<string>Position</string>
 					<key>value</key>
 					<array>
-						<real>7.152557373046875e-07</real>
-						<real>423.59921264648438</real>
+						<real>7.1525590783494408e-07</real>
+						<real>175.07492065429688</real>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -129,14 +129,6 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>dampedSpringEnabled</string>
-					<key>type</key>
-					<string>Check</string>
-					<key>value</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>name</key>
 					<string>dampedSpringRestAngle</string>
 					<key>type</key>
 					<string>Degrees</string>
@@ -171,8 +163,6 @@
 					</array>
 				</dict>
 			</array>
-			<key>selected</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>UUID</key>
@@ -199,7 +189,7 @@
 					<key>value</key>
 					<array>
 						<real>8.9406967163085938e-08</real>
-						<real>297.56100463867188</real>
+						<real>49.036705017089844</real>
 						<integer>0</integer>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -264,14 +254,6 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>dampedSpringEnabled</string>
-					<key>type</key>
-					<string>Check</string>
-					<key>value</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>name</key>
 					<string>dampedSpringRestAngle</string>
 					<key>type</key>
 					<string>Degrees</string>
@@ -298,6 +280,8 @@
 					</array>
 				</dict>
 			</array>
+			<key>selected</key>
+			<true/>
 		</dict>
 	</array>
 	<key>jsControlled</key>
@@ -406,7 +390,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>248.52430725097656</real>
+							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -579,7 +563,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>361.89468383789062</real>
+							<real>113.37037658691406</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -752,7 +736,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>495.05490112304688</real>
+							<real>246.53060913085938</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>

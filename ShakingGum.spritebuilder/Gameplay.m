@@ -39,7 +39,7 @@
     _gum.scale = (0.5);
     
     [_physicsNode addChild:_gum];
-    _gum.position = CGPointMake(screenSize.width/2, -100);
+    _gum.position = CGPointMake(screenSize.width/2, 0);
 
     _physicsNode.debugDraw = TRUE;
     itemManager = [ItemManager getInstance];
@@ -99,18 +99,17 @@
 // This method is running every frame
 - (void)update:(CCTime)delta {
     // do every thing for the items here
-//    NSMutableArray * currentItems = [itemManager getAllItems];
-//    
     for (id obj in _physicsNode.children) {
         if ([obj isKindOfClass:[Item class]]) {
             Item* item = (Item* ) obj;
             for (CCNode * itemObj in item.children) {
                 
                 CGRect itemObjBoundingbox = itemObj.boundingBox;
-                itemObjBoundingbox.origin = [item convertToWorldSpace:itemObj.position];
+                itemObjBoundingbox.origin = [itemObj.parent convertToWorldSpace:itemObjBoundingbox.origin];
+//                itemObjBoundingbox.origin.y = itemObjBoundingbox.origin.y - itemObjBoundingbox.size.height;
                 
                 CGRect headBoundingbox = [[_gum getGumHead] boundingBox];
-                headBoundingbox.origin = [_gum convertToWorldSpace:[_gum getGumHead].position];
+                headBoundingbox.origin = [[_gum getGumHead].parent convertToWorldSpace:headBoundingbox.origin];
                 headBoundingbox.origin.y = headBoundingbox.origin.y - 50;
                 
                 //check crashing here --------------------
