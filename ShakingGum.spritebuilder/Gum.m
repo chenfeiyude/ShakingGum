@@ -13,6 +13,9 @@
     CCNode *_gumHead;
     CCNode *_gumBody;
     CCNode *_gumBase;
+    
+    NSInteger score;
+    Status* status;
 }
 
 
@@ -22,9 +25,17 @@
     if(self)
     {
         NSLog(@"Gum initialised");
+        [self initStatus];
     }
     
     return self;
+}
+
+-(void) initStatus{
+    if (status == nil) {
+        status = [[Status alloc] init];
+    }
+    [status setStatus: INIT];
 }
 
 -(CCNode *)getGumHead
@@ -42,7 +53,22 @@
     return _gumBase;
 }
 
+-(NSInteger) getScore
+{
+    return score;
+}
 
+-(Status *) getStatus
+{
+    return status;
+}
 
+-(void) handleItem : (Item *) item
+{
+    Status* itemStatus = item.getStatus;
+    [status setStatus:[itemStatus getStatus]];
+    score += [[item getStatus] getValue];
+    NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE)", (long)[status getStatus]);
+}
 
 @end

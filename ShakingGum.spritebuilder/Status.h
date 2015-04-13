@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, GameObjStatus) {
-    INIT,
-    DEAD,
-    ADD_SCORE
+    INIT = 0,
+    DEAD = 1,
+    ADD_SCORE = 2
 };
 
 @interface Status : NSObject {

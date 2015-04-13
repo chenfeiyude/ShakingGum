@@ -7,12 +7,18 @@
 //
 
 #import "CCSprite.h"
+#import "Item.h"
+#import "ScoreItem.h"
+#import "Bomb.h"
+#import "Status.h"
 
 @interface Gum : CCSprite
 
 -(CCNode *)getGumHead;
 -(CCNode *)getGumBody;
 -(CCNode *)getGumBase;
-
+-(void) handleItem : (Item *) item;
+-(NSInteger) getScore;
+-(Status *) getStatus;
 
 @end

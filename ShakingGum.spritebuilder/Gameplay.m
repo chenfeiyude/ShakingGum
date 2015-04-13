@@ -22,7 +22,6 @@
     
     CCPhysicsNode * _physicsNode;
     
-    int score;
     CCLabelTTF *_scoreLabel;
 }
 
@@ -50,11 +49,7 @@
     
 }
 
--(void) updateScore
-{
-    score += 1;
-    [_scoreLabel setString:[NSString stringWithFormat:@"Score: %d", score]];
-}
+
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -106,11 +101,10 @@
                 
                 CGRect itemObjBoundingbox = itemObj.boundingBox;
                 itemObjBoundingbox.origin = [itemObj.parent convertToWorldSpace:itemObjBoundingbox.origin];
-//                itemObjBoundingbox.origin.y = itemObjBoundingbox.origin.y - itemObjBoundingbox.size.height;
+                itemObjBoundingbox.origin.y = itemObjBoundingbox.origin.y + 50;
                 
                 CGRect headBoundingbox = [[_gum getGumHead] boundingBox];
                 headBoundingbox.origin = [[_gum getGumHead].parent convertToWorldSpace:headBoundingbox.origin];
-                headBoundingbox.origin.y = headBoundingbox.origin.y - 50;
                 
                 //check crashing here --------------------
                 if (CGRectIntersectsRect(itemObjBoundingbox, headBoundingbox))
@@ -128,10 +122,11 @@
                     exploding.position = [item convertToWorldSpace:itemObj.position];
                     
                     [self addChild:exploding];
-                    //
-                    //[item getStatus];// add status to gum
+                    
+                    // handle items, like add score, dead ...
+                    [_gum handleItem:item];
+                    
                     [item killItem];
-                    [self updateScore];
                 }
                 
                 //check dead items here -------------------
@@ -144,6 +139,10 @@
 
         }
         
+    }
+    
+    if ([[_gum getStatus] getStatus] != DEAD) {
+        [_scoreLabel setString:[NSString stringWithFormat:@"Score: %ld", (long)[_gum getScore]]];
     }
     
     [itemManager deleteDeadItems];

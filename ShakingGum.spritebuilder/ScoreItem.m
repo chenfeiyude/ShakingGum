@@ -40,7 +40,9 @@
         status = [[Status alloc] init];
     }
     [status setStatus: ADD_SCORE];
-    [status setvalue: 10];// this value should be random later
+    NSInteger randomValue = 1 + arc4random_uniform(9);//1 - 10
+    [status setvalue: randomValue];
+    
 }
 
 @end

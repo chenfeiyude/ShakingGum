@@ -84,11 +84,11 @@
 //create an random item to the game
 -(id) createRandomItem{
     if (currentItems != nil && currentItems.count <= maxItemSize) {
-        int random = arc4random_uniform(maxItemSize);
+        NSInteger random = arc4random_uniform((u_int32_t)maxItemSize);
         ItemType itemType = NONE;
-        int range = maxItemSize / enum_count;
-        int bomb_range = range * ( BOMB + 1 ); // BOMB = 0 in enum set
-        int score_range = range * ( SCORE_ITEM + 1);
+        NSInteger range = maxItemSize / enum_count;
+        NSInteger bomb_range = range * ( BOMB + 1 ); // BOMB = 0 in enum set
+        NSInteger score_range = range * ( SCORE_ITEM + 1);
         if (random <= bomb_range) {
             itemType = BOMB;
         }
