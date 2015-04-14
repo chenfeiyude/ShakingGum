@@ -30,8 +30,11 @@
         
         moveSpeed = 100;
         
+        //set lower friction and mass would be better to move
         [[_gumHead physicsBody] setFriction:0.f];
+        [[_gumHead physicsBody] setMass:0.f];
         [[_gumBody physicsBody] setFriction:0.f];
+        [[_gumBody physicsBody] setMass:0.f];
     }
     
     return self;

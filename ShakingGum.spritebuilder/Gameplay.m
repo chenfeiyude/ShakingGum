@@ -65,10 +65,6 @@
     {
         beginTouchLocation = touchLocation;
     }
-    
-    if(CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
-    {
-    }
 }
 
 -(void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event
