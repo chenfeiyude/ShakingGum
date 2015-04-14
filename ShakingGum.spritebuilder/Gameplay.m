@@ -80,7 +80,6 @@
                 
                 CGRect itemObjBoundingbox = itemObj.boundingBox;
                 itemObjBoundingbox.origin = [itemObj.parent convertToWorldSpace:itemObjBoundingbox.origin];
-                itemObjBoundingbox.origin.y = itemObjBoundingbox.origin.y + 50;
                 
                 CGRect headBoundingbox = [[_gum getGumHead] boundingBox];
                 headBoundingbox.origin = [[_gum getGumHead].parent convertToWorldSpace:headBoundingbox.origin];
