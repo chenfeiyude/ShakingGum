@@ -36,7 +36,6 @@
     
     // initialise Gum in GamePlay scene
     _gum = (Gum *)[CCBReader load:@"Gum"];
-    [_gum creatGumBody];
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     _gum.scale = (0.5);
     

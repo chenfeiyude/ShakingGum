@@ -27,6 +27,7 @@
     {
         NSLog(@"Gum initialised");
         [self initStatus];
+        [self creatGumBody];
     }
     
     return self;
@@ -94,14 +95,16 @@
         CCNode* bodyA = [CCBReader load:@"GumBody"];
         bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
         [gumBody addChild:bodyA];
+        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
         [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
-//        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-30.f max:30.f];
+        
         bodyB = bodyA;
     }
     gumHead = [CCBReader load:@"GumBody"];
     gumHead.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
+    [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
     [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
-//    [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-30.f max:30.f];
+    
     [self addChild:gumHead];
     [self addChild:gumBody];
     [self addChild:gumBase];
