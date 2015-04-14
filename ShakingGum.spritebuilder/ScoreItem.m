@@ -17,7 +17,7 @@
     if (self)
     {
         [self initStatus];
-        [self addChild:[CCBReader load:@"ScoreItem"]];
+        [self addItemObj:[CCBReader load:@"ScoreItem"]];
         [self initPosition];
         [self initSpeed];
     }

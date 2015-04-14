@@ -21,5 +21,5 @@
 -(NSInteger) getScore;
 -(Status *) getStatus;
 -(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition;
-
+-(void) creatGumBody;
 @end

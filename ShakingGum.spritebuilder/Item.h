@@ -25,4 +25,5 @@
 -(void) killItem;//kill this item
 -(void) move;
 -(id) getStatus;
+-(void) addItemObj: (CCNode*) itemObj;
 @end

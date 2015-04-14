@@ -48,7 +48,7 @@
 
 -(void) initSpeed{
     //set a random speed here
-    speed = arc4random_uniform(10) + 1; // avoid 0 speed
+    speed = arc4random_uniform(100) + 1; // avoid 0 speed
     [self move];
 }
 
@@ -77,6 +77,15 @@
 
 -(id) getStatus {
     return status;
+}
+
+-(void) addItemObj: (CCNode*) itemObj
+{
+    if (itemObj != nil) {
+        [itemObj.physicsBody setFriction:1000.f];
+        [itemObj.physicsBody setMass:1000.f];
+        [self addChild:itemObj];
+    }
 }
 
 @end

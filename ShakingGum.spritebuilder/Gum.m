@@ -10,9 +10,9 @@
 
 @implementation Gum
 {
-    CCNode *_gumHead;
-    CCNode *_gumBody;
-    CCNode *_gumBase;
+    CCNode *gumHead;
+    CCNode *gumBody;
+    CCNode *gumBase;
     
     NSInteger score;
     Status* status;
@@ -27,14 +27,6 @@
     {
         NSLog(@"Gum initialised");
         [self initStatus];
-        
-        moveSpeed = 100;
-        
-        //set lower friction and mass would be better to move
-        [[_gumHead physicsBody] setFriction:0.f];
-        [[_gumHead physicsBody] setMass:0.f];
-        [[_gumBody physicsBody] setFriction:0.f];
-        [[_gumBody physicsBody] setMass:0.f];
     }
     
     return self;
@@ -45,21 +37,22 @@
         status = [[Status alloc] init];
     }
     [status setStatus: INIT];
+    moveSpeed = 100;
 }
 
 -(CCNode *)getGumHead
 {
-    return _gumHead;
+    return gumHead;
 }
 
 -(CCNode *)getGumBody
 {
-    return _gumBody;
+    return gumBody;
 }
 
 -(CCNode *)getGumBase
 {
-    return _gumBase;
+    return gumBase;
 }
 
 -(NSInteger) getScore
@@ -83,14 +76,41 @@
 -(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition
 {
     CGPoint force = CGPointMake(direction.x * moveSpeed, direction.y * moveSpeed);
-    if (CGRectContainsPoint([_gumHead boundingBox], touchPosition))
-    {
-        [_gumHead.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+    [gumHead.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+    for (CCNode* obj in gumBody.children) {
+        [obj.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
     }
-    else if(CGRectContainsPoint([_gumBody boundingBox], touchPosition))
-    {
-        [_gumBody.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+}
+
+-(void) creatGumBody
+{
+    gumBody = [[CCSprite alloc] init];
+    gumBase = [CCBReader load:@"GumBody"];
+    gumBase.position = CGPointMake(0, 0);
+    gumBase.physicsBody.type = CCPhysicsBodyTypeStatic;
+    
+    CCNode* bodyB = gumBase;
+    for (int i = 0; i < 10; i++) {
+        CCNode* bodyA = [CCBReader load:@"GumBody"];
+        bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
+        [gumBody addChild:bodyA];
+        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
+//        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-30.f max:30.f];
+        bodyB = bodyA;
     }
+    gumHead = [CCBReader load:@"GumBody"];
+    gumHead.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
+    [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
+//    [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-30.f max:30.f];
+    [self addChild:gumHead];
+    [self addChild:gumBody];
+    [self addChild:gumBase];
+    
+    //set lower friction and mass would be better to move
+    [[gumHead physicsBody] setFriction:0.f];
+    [[gumHead physicsBody] setMass:10.f];
+    [[gumBody physicsBody] setFriction:0.f];
+    [[gumBody physicsBody] setMass:10.f];
 }
 
 @end

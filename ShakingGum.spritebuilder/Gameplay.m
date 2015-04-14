@@ -36,6 +36,7 @@
     
     // initialise Gum in GamePlay scene
     _gum = (Gum *)[CCBReader load:@"Gum"];
+    [_gum creatGumBody];
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     _gum.scale = (0.5);
     
@@ -57,14 +58,7 @@
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [touch locationInNode:_gum];
-    
-
-    // when a touch insdie of the Gum body occurs
-    if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation)
-        || CGRectContainsPoint([[_gum getGumBody] boundingBox], touchLocation))
-    {
-        beginTouchLocation = touchLocation;
-    }
+    beginTouchLocation = touchLocation;
 }
 
 -(void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event

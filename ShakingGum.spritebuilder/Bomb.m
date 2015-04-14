@@ -19,7 +19,7 @@
     {
 //        CCLOG(@"Bomb created");
         [self initStatus];
-        [self addChild:[CCBReader load:@"Bomb"]];
+        [self addItemObj:[CCBReader load:@"Bomb"]];
         [self initPosition];
         [self initSpeed];
     }
