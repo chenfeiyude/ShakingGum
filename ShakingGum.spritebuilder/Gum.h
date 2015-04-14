@@ -20,5 +20,6 @@
 -(void) handleItem : (Item *) item;
 -(NSInteger) getScore;
 -(Status *) getStatus;
+-(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition;
 
 @end

@@ -23,6 +23,8 @@
     CCPhysicsNode * _physicsNode;
     
     CCLabelTTF *_scoreLabel;
+    
+    CGPoint beginTouchLocation;
 }
 
 
@@ -38,6 +40,7 @@
     _gum.scale = (0.5);
     
     [_physicsNode addChild:_gum];
+    
     _gum.position = CGPointMake(screenSize.width/2, 0);
 
     _physicsNode.debugDraw = TRUE;
@@ -57,12 +60,10 @@
     
 
     // when a touch insdie of the Gum body occurs
-    if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation))
+    if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation)
+        || CGRectContainsPoint([[_gum getGumBody] boundingBox], touchLocation))
     {
-    }
-    
-    if(CGRectContainsPoint([[_gum getGumBody] boundingBox], touchLocation))
-    {
+        beginTouchLocation = touchLocation;
     }
     
     if(CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
@@ -73,21 +74,9 @@
 -(void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     CGPoint touchLocation = [touch locationInNode:_gum];
+    CGPoint direction = CGPointMake(touchLocation.x - beginTouchLocation.x, touchLocation.y - beginTouchLocation.y);
     
-    // start Gum dragging when a touch insdie of the Gum body occurs
-    if (CGRectContainsPoint([[_gum getGumHead] boundingBox], touchLocation))
-    {
-        [_gum getGumHead].position = touchLocation;
-    }
-    
-    if(CGRectContainsPoint([[_gum getGumBody] boundingBox], touchLocation))
-    {
-        [_gum getGumBody].position = touchLocation;
-    }
-    
-    if(CGRectContainsPoint([[_gum getGumBase] boundingBox], touchLocation))
-    {
-    }
+    [_gum move:direction beginTouchLocation:beginTouchLocation];
 }
 
 

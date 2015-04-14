@@ -157,7 +157,7 @@
 					<key>type</key>
 					<string>Degrees</string>
 					<key>value</key>
-					<real>-30</real>
+					<real>-20</real>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -165,7 +165,7 @@
 					<key>type</key>
 					<string>Degrees</string>
 					<key>value</key>
-					<real>30</real>
+					<real>20</real>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -187,8 +187,6 @@
 					<integer>1</integer>
 				</dict>
 			</array>
-			<key>selected</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>UUID</key>
@@ -308,7 +306,7 @@
 					<key>type</key>
 					<string>Degrees</string>
 					<key>value</key>
-					<real>-60</real>
+					<real>-70</real>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -316,7 +314,7 @@
 					<key>type</key>
 					<string>Degrees</string>
 					<key>value</key>
-					<real>60</real>
+					<real>70</real>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -338,6 +336,8 @@
 					<integer>1</integer>
 				</dict>
 			</array>
+			<key>selected</key>
+			<true/>
 		</dict>
 	</array>
 	<key>jsControlled</key>
@@ -571,6 +571,10 @@
 							<real>243</real>
 						</array>
 						<array>
+							<real>24.418586730957031</real>
+							<real>250.10636901855469</real>
+						</array>
+						<array>
 							<real>53</real>
 							<real>243</real>
 						</array>
@@ -589,6 +593,10 @@
 							<array>
 								<real>53</real>
 								<real>243</real>
+							</array>
+							<array>
+								<real>24.418586730957031</real>
+								<real>250.10636901855469</real>
 							</array>
 							<array>
 								<real>0.0</real>

@@ -16,6 +16,7 @@
     
     NSInteger score;
     Status* status;
+    NSInteger moveSpeed;
 }
 
 
@@ -26,6 +27,11 @@
     {
         NSLog(@"Gum initialised");
         [self initStatus];
+        
+        moveSpeed = 100;
+        
+        [[_gumHead physicsBody] setFriction:0.f];
+        [[_gumBody physicsBody] setFriction:0.f];
     }
     
     return self;
@@ -69,6 +75,19 @@
     [status setStatus:[itemStatus getStatus]];
     score += [[item getStatus] getValue];
     NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE)", (long)[status getStatus]);
+}
+
+-(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition
+{
+    CGPoint force = CGPointMake(direction.x * moveSpeed, direction.y * moveSpeed);
+    if (CGRectContainsPoint([_gumHead boundingBox], touchPosition))
+    {
+        [_gumHead.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+    }
+    else if(CGRectContainsPoint([_gumBody boundingBox], touchPosition))
+    {
+        [_gumBody.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+    }
 }
 
 @end
