@@ -22,4 +22,6 @@
 -(Status *) getStatus;
 -(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition;
 -(void) creatGumBody;
+-(void) reduceTime:(CCTime)delta;
+-(NSInteger) getRemainTime;
 @end

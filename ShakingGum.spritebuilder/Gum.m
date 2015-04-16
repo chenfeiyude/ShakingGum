@@ -15,6 +15,7 @@
     CCNode *gumBase;
     
     NSInteger score;
+    NSInteger remainTime;
     Status* status;
     NSInteger moveSpeed;
 }
@@ -28,6 +29,10 @@
         NSLog(@"Gum initialised");
         [self initStatus];
         [self creatGumBody];
+        
+        CGSize screenSize = [CCDirector sharedDirector].viewSize;
+        self.position = CGPointMake(screenSize.width/2, 0);
+        self.scale = (0.5);
     }
     
     return self;
@@ -39,6 +44,7 @@
     }
     [status setStatus: INIT];
     moveSpeed = 100;
+    remainTime = 100;// init remain time 100s
 }
 
 -(CCNode *)getGumHead
@@ -114,6 +120,24 @@
     [[gumHead physicsBody] setMass:10.f];
     [[gumBody physicsBody] setFriction:0.f];
     [[gumBody physicsBody] setMass:10.f];
+    
+    [[gumHead physicsBody] setCollisionType:@"GumHead"];
+}
+
+-(void) reduceTime:(CCTime)delta {
+    //reduce game time
+    if (remainTime > 0) {
+        remainTime--;
+    }
+    else {
+        //timeout game over, gum is dead now
+        [status setStatus:DEAD];
+    }
+}
+
+-(NSInteger) getRemainTime
+{
+    return remainTime;
 }
 
 @end

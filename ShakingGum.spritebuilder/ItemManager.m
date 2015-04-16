@@ -19,7 +19,7 @@
     if (self)
     {
         currentItems = [NSMutableArray new];
-        maxItemSize  = 3;
+        maxItemSize  = 10;
     }
     
     return self;

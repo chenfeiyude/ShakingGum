@@ -16,13 +16,15 @@
 
 @implementation Gameplay
 {
-    Gum *_gum;
+    Gum *gum;
     
     ItemManager *itemManager;
     
     CCPhysicsNode * _physicsNode;
     
     CCLabelTTF *_scoreLabel;
+    
+    CCLabelTTF *_timeLabel;
     
     CGPoint beginTouchLocation;
 }
@@ -35,42 +37,46 @@
     self.userInteractionEnabled = TRUE;
     
     // initialise Gum in GamePlay scene
-    _gum = (Gum *)[CCBReader load:@"Gum"];
-    CGSize screenSize = [CCDirector sharedDirector].viewSize;
-    _gum.scale = (0.5);
+    gum = [[Gum alloc] init];
     
-    [_physicsNode addChild:_gum];
-    
-    _gum.position = CGPointMake(screenSize.width/2, 0);
+    [_physicsNode addChild:gum];
 
     _physicsNode.debugDraw = TRUE;
     itemManager = [ItemManager getInstance];
     
-    [_gum getGumHead].physicsBody.collisionType = @"GumHead";
-    
     [self schedule:@selector(addItems:) interval:1];
-    
+
+    [self schedule:@selector(reduceTime:) interval:1];
 }
 
 
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint touchLocation = [touch locationInNode:_gum];
+    CGPoint touchLocation = [touch locationInNode:gum];
     beginTouchLocation = touchLocation;
 }
 
 -(void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
-    CGPoint touchLocation = [touch locationInNode:_gum];
+    CGPoint touchLocation = [touch locationInNode:gum];
     CGPoint direction = CGPointMake(touchLocation.x - beginTouchLocation.x, touchLocation.y - beginTouchLocation.y);
     
-    [_gum move:direction beginTouchLocation:beginTouchLocation];
+    [gum move:direction beginTouchLocation:beginTouchLocation];
 }
 
 
 // This method is running every frame
 - (void)update:(CCTime)delta {
+    if ([[gum getStatus] getStatus] != DEAD) {
+        [_scoreLabel setString:[NSString stringWithFormat:@"Score: %ld", (long)[gum getScore]]];
+        [_timeLabel setString:[NSString stringWithFormat:@"Time: %ld s", (long)[gum getRemainTime]]];
+    }
+    else {
+        NSLog(@"Game Over!!!!");
+        // show share and score
+    }
+    
     // do every thing for the items here
     for (id obj in _physicsNode.children) {
         if ([obj isKindOfClass:[Item class]]) {
@@ -80,30 +86,27 @@
                 CGRect itemObjBoundingbox = itemObj.boundingBox;
                 itemObjBoundingbox.origin = [itemObj.parent convertToWorldSpace:itemObjBoundingbox.origin];
                 
-                CGRect headBoundingbox = [[_gum getGumHead] boundingBox];
-                headBoundingbox.origin = [[_gum getGumHead].parent convertToWorldSpace:headBoundingbox.origin];
+                CGRect headBoundingbox = [[gum getGumHead] boundingBox];
+                headBoundingbox.origin = [[gum getGumHead].parent convertToWorldSpace:headBoundingbox.origin];
                 
                 //check crashing here --------------------
                 if (CGRectIntersectsRect(itemObjBoundingbox, headBoundingbox))
                 {
-                    
-                    NSLog(@"item location: %@", NSStringFromCGRect(itemObjBoundingbox));
-                    NSLog(@"head location: %@", NSStringFromCGRect(headBoundingbox));
-                
                     //should have only one obj in an item
                     
                     NSLog(@"crashing");
                     
+                    // show exploding
                     CCParticleSystem *exploding = [item crashing];
-                    
                     exploding.position = [item convertToWorldSpace:itemObj.position];
-                    
                     [self addChild:exploding];
                     
                     // handle items, like add score, dead ...
-                    [_gum handleItem:item];
+                    [gum handleItem:item];
                     
                     [item killItem];
+                    
+                    continue;
                 }
                 
                 //check dead items here -------------------
@@ -118,13 +121,8 @@
         
     }
     
-    if ([[_gum getStatus] getStatus] != DEAD) {
-        [_scoreLabel setString:[NSString stringWithFormat:@"Score: %ld", (long)[_gum getScore]]];
-    }
-    
     [itemManager deleteDeadItems];
-    
-   }
+}
 
 -(void) addItems:(CCTime)delta {
     //create items
@@ -134,4 +132,8 @@
     }
 }
 
+-(void) reduceTime:(CCTime)delta {
+    //reduce game time
+    [gum reduceTime:delta];
+}
 @end
