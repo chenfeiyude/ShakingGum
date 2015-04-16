@@ -75,6 +75,7 @@
     else {
         NSLog(@"Game Over!!!!");
         // show share and score
+        [self gameOver];
     }
     
     // do every thing for the items here
@@ -135,5 +136,11 @@
 -(void) reduceTime:(CCTime)delta {
     //reduce game time
     [gum reduceTime:delta];
+}
+
+-(void) gameOver
+{
+    CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
+    [[CCDirector sharedDirector] replaceScene:gameOverScene];
 }
 @end
