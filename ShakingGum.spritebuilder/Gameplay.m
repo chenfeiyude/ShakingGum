@@ -87,8 +87,9 @@
                 CGRect itemObjBoundingbox = itemObj.boundingBox;
                 itemObjBoundingbox.origin = [itemObj.parent convertToWorldSpace:itemObjBoundingbox.origin];
                 
-                CGRect headBoundingbox = [[gum getGumHead] boundingBox];
-                headBoundingbox.origin = [[gum getGumHead].parent convertToWorldSpace:headBoundingbox.origin];
+                CCNode *gumHead = [gum getGumHead];
+                CGRect headBoundingbox = gumHead.boundingBox;
+                headBoundingbox.origin = [gumHead.parent convertToWorldSpace:headBoundingbox.origin];
                 
                 //check crashing here --------------------
                 if (CGRectIntersectsRect(itemObjBoundingbox, headBoundingbox))
@@ -142,5 +143,6 @@
 {
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
     [[CCDirector sharedDirector] replaceScene:gameOverScene];
+    [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:1]];
 }
 @end
