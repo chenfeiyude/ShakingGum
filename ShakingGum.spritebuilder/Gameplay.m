@@ -42,6 +42,8 @@
     [_physicsNode addChild:gum];
 
     _physicsNode.debugDraw = TRUE;
+    _physicsNode.collisionDelegate = self;
+    
     itemManager = [ItemManager getInstance];
     
     [self schedule:@selector(addItems:) interval:1];
@@ -83,34 +85,6 @@
         if ([obj isKindOfClass:[Item class]]) {
             Item* item = (Item* ) obj;
             for (CCNode * itemObj in item.children) {
-                
-                CGRect itemObjBoundingbox = itemObj.boundingBox;
-                itemObjBoundingbox.origin = [itemObj.parent convertToWorldSpace:itemObjBoundingbox.origin];
-                
-                CCNode *gumHead = [gum getGumHead];
-                CGRect headBoundingbox = gumHead.boundingBox;
-                headBoundingbox.origin = [gumHead.parent convertToWorldSpace:headBoundingbox.origin];
-                
-                //check crashing here --------------------
-                if (CGRectIntersectsRect(itemObjBoundingbox, headBoundingbox))
-                {
-                    //should have only one obj in an item
-                    
-                    NSLog(@"crashing");
-                    
-                    // show exploding
-                    CCParticleSystem *exploding = [item crashing];
-                    exploding.position = [item convertToWorldSpace:itemObj.position];
-                    [self addChild:exploding];
-                    
-                    // handle items, like add score, dead ...
-                    [gum handleItem:item];
-                    
-                    [item killItem];
-                    
-                    continue;
-                }
-                
                 //check dead items here -------------------
                 if ([item convertToWorldSpace:itemObj.position].y <= 0) {
                     //delete all items out of screen
@@ -118,12 +92,29 @@
                 }
 
             }
-
         }
         
     }
     
     [itemManager deleteDeadItems];
+}
+
+
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair GumHead:(CCNode *)gumHead Item:(CCNode *)itemObj
+{
+    Item* item = (Item* ) itemObj.parent;
+    NSLog(@"crashing");
+    
+    // show exploding
+    CCParticleSystem *exploding = [item crashing];
+    exploding.position = [item convertToWorldSpace:itemObj.position];
+    [self addChild:exploding];
+    
+    // handle items, like add score, dead ...
+    [gum handleItem:item];
+    
+    [item killItem];
+    return YES;
 }
 
 -(void) addItems:(CCTime)delta {
@@ -143,6 +134,6 @@
 {
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
     [[CCDirector sharedDirector] replaceScene:gameOverScene];
-    [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:1]];
+    [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
 }
 @end

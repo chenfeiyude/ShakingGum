@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 @implementation Item
+static NSString* itemChildName = @"itemObj";
 
 -(id)init
 {
@@ -18,7 +19,6 @@
     if (self)
     {
         status = [[Status alloc] init];
-        [self initSpeed];
         isDead = NO;
         //need to load the obj in child classes
         //e.g [self addChild:[CCBReader load:@"Bomb"]];
@@ -42,7 +42,8 @@
     CGRect screen = [[UIScreen mainScreen] bounds];
     CGFloat width = CGRectGetWidth(screen);
     CGFloat height = CGRectGetHeight(screen);
-    width = arc4random_uniform(width); // need to be improved
+    CCNode *itemObj = [self getChildByName:itemChildName recursively:false];
+    width = arc4random_uniform(width - itemObj.boundingBox.size.width); // need to be improved
     self.position = CGPointMake(width, height); // initial item position
 }
 
@@ -63,7 +64,8 @@
 
 -(void) move{
     CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
-    [self.physicsBody applyForce: force]; // give the item a speed, need to enable physics in spritbuilder
+    CCNode *itemObj = [self getChildByName:itemChildName recursively:false];
+    [itemObj.physicsBody applyForce: force]; // give the item a speed, need to enable physics in spritbuilder
 }
 
 //get 1 for right and -1 for left direction
@@ -82,9 +84,10 @@
 -(void) addItemObj: (CCNode*) itemObj
 {
     if (itemObj != nil) {
+        [itemObj.physicsBody setCollisionType:@"Item"];
         [itemObj.physicsBody setFriction:1000.f];
         [itemObj.physicsBody setMass:1000.f];
-        [self addChild:itemObj];
+        [self addChild:itemObj z:0 name:itemChildName];
     }
 }
 

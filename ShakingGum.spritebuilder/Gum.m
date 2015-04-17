@@ -97,7 +97,7 @@
     gumBase.physicsBody.type = CCPhysicsBodyTypeStatic;
     
     CCNode* bodyB = gumBase;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 15; i++) {
         CCNode* bodyA = [CCBReader load:@"GumBody"];
         bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
         [gumBody addChild:bodyA];
@@ -111,17 +111,17 @@
     [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
     [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
     
-    [self addChild:gumHead];
-    [self addChild:gumBody];
-    [self addChild:gumBase];
-    
     //set lower friction and mass would be better to move
-    [[gumHead physicsBody] setFriction:0.f];
+    [[gumHead physicsBody] setFriction:10.f];
     [[gumHead physicsBody] setMass:10.f];
-    [[gumBody physicsBody] setFriction:0.f];
+    [[gumBody physicsBody] setFriction:10.f];
     [[gumBody physicsBody] setMass:10.f];
     
     [[gumHead physicsBody] setCollisionType:@"GumHead"];
+    
+    [self addChild:gumHead];
+    [self addChild:gumBody];
+    [self addChild:gumBase];
 }
 
 -(void) reduceTime:(CCTime)delta {

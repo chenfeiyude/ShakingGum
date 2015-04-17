@@ -20,6 +20,7 @@
     {
         currentItems = [NSMutableArray new];
         maxItemSize  = 10;
+        maxBombSize  = 3;
     }
     
     return self;
@@ -89,7 +90,13 @@
         NSInteger range = maxItemSize / enum_count;
         NSInteger bomb_range = range * ( BOMB + 1 ); // BOMB = 0 in enum set
         NSInteger score_range = range * ( SCORE_ITEM + 1);
-        if (random <= bomb_range) {
+        NSInteger bomb_number = 0;
+        for (id item in currentItems) {
+            if ([item isKindOfClass:[Bomb class]]) {
+                bomb_number++;
+            }
+        }
+        if (random <= bomb_range && bomb_number < maxBombSize) {
             itemType = BOMB;
         }
         else if (random > bomb_range && random <= score_range) {
