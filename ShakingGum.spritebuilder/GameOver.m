@@ -9,11 +9,26 @@
 #import "GameOver.h"
 
 @implementation GameOver
+{
+    CCLabelTTF *_finalScore;
+}
 
-- (void)play
+- (void)didLoadFromCCB
+{
+    NSInteger score = [[NSUserDefaults standardUserDefaults] integerForKey:@"FinalScore"];
+    [_finalScore setString:[NSString stringWithFormat:@"Score: %ld", (long)score]];
+
+}
+
+- (void)playAgain
 {
     CCScene *gamePlayScene = [CCBReader loadAsScene:@"Gameplay"];
     [[CCDirector sharedDirector] replaceScene:gamePlayScene];
+}
+
+- (void)ShareToFaceBook
+{
+    NSLog(@"share to facebook");
 }
 
 @end

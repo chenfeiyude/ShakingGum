@@ -77,6 +77,7 @@
     else {
         NSLog(@"Game Over!!!!");
         // show share and score
+        [[NSUserDefaults standardUserDefaults] setInteger:[gum getScore] forKey:@"FinalScore"];
         [self gameOver];
     }
     
@@ -133,7 +134,6 @@
 -(void) gameOver
 {
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
-    [[CCDirector sharedDirector] replaceScene:gameOverScene];
     [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
 }
 @end
