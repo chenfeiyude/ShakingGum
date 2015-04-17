@@ -96,6 +96,7 @@
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
 		F01FBD5F1AB641DC006F762F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = F01FBD5E1AB641DC006F762F /* Gameplay.m */; };
 		F028EB831AC22B190061D2FA /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F028EB821AC22B190061D2FA /* Gum.m */; };
+		F06800811AE13F59009C9E39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06800801AE13F59009C9E39 /* Social.framework */; };
 		FA7A6AE01ADF450E000A9FA6 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */; };
 		FAD934F61ABA3BD80050B39E /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934F51ABA3BD80050B39E /* Item.m */; };
 		FAD934FB1ABA3CD00050B39E /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934FA1ABA3CD00050B39E /* Status.m */; };
@@ -225,6 +226,7 @@
 		F01FBD5E1AB641DC006F762F /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
 		F028EB811AC22B190061D2FA /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gum.h; sourceTree = "<group>"; };
 		F028EB821AC22B190061D2FA /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
+		F06800801AE13F59009C9E39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FA7A6ADE1ADF450E000A9FA6 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
 		FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOver.m; sourceTree = "<group>"; };
 		FAD934F41ABA3BD80050B39E /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F06800811AE13F59009C9E39 /* Social.framework in Frameworks */,
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
@@ -460,8 +463,8 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F02681601ACC02B5006DECD1 /* Model */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
+				F02681601ACC02B5006DECD1 /* Model */,
 				F01FBD5D1AB641DC006F762F /* Gameplay.h */,
 				F01FBD5E1AB641DC006F762F /* Gameplay.m */,
 				FA7A6ADE1ADF450E000A9FA6 /* GameOver.h */,
@@ -519,6 +522,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F06800801AE13F59009C9E39 /* Social.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,
 				BC5399D51A44DCC90063F482 /* GLActivityKit.framework */,
@@ -660,6 +664,7 @@
 						CreatedOnToolsVersion = 6.0.1;
 					};
 					B77F1B2D17B978D7009739AE = {
+						DevelopmentTeam = 3XGFTC4S4R;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;

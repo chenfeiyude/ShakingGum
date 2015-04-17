@@ -40,8 +40,7 @@
     gum = [[Gum alloc] init];
     
     [_physicsNode addChild:gum];
-
-    _physicsNode.debugDraw = TRUE;
+    
     _physicsNode.collisionDelegate = self;
     
     itemManager = [ItemManager getInstance];
