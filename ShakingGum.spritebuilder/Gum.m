@@ -112,10 +112,13 @@
     [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
     
     //set lower friction and mass would be better to move
-    [[gumHead physicsBody] setFriction:10.f];
-    [[gumHead physicsBody] setMass:10.f];
-    [[gumBody physicsBody] setFriction:10.f];
-    [[gumBody physicsBody] setMass:10.f];
+//    [gumHead.physicsBody setFriction:0.f];
+//    [gumHead.physicsBody setMass:10.f];
+//    [gumBody.physicsBody setFriction:0.f];
+//    [gumBody.physicsBody setMass:10.f];
+    
+//    [gumHead.physicsBody setAffectedByGravity:FALSE];
+//    [gumBody.physicsBody setAffectedByGravity:FALSE];
     
     [[gumHead physicsBody] setCollisionType:@"GumHead"];
     
