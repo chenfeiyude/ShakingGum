@@ -9,5 +9,5 @@
 #import "CCNode.h"
 
 
-@interface Gameplay : CCNode
+@interface GamePlay : CCNode
 @end

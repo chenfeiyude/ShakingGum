@@ -94,7 +94,7 @@
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
-		F01FBD5F1AB641DC006F762F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = F01FBD5E1AB641DC006F762F /* Gameplay.m */; };
+		F01FBD5F1AB641DC006F762F /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F01FBD5E1AB641DC006F762F /* GamePlay.m */; };
 		F028EB831AC22B190061D2FA /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F028EB821AC22B190061D2FA /* Gum.m */; };
 		F06800811AE13F59009C9E39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06800801AE13F59009C9E39 /* Social.framework */; };
 		FA7A6AE01ADF450E000A9FA6 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */; };
@@ -222,8 +222,8 @@
 		BC5399D61A44DCC90063F482 /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
 		BC5399D71A44DCC90063F482 /* JavaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaKit.framework"; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
-		F01FBD5D1AB641DC006F762F /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
-		F01FBD5E1AB641DC006F762F /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
+		F01FBD5D1AB641DC006F762F /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
+		F01FBD5E1AB641DC006F762F /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
 		F028EB811AC22B190061D2FA /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gum.h; sourceTree = "<group>"; };
 		F028EB821AC22B190061D2FA /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
 		F06800801AE13F59009C9E39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -465,8 +465,8 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				F02681601ACC02B5006DECD1 /* Model */,
-				F01FBD5D1AB641DC006F762F /* Gameplay.h */,
-				F01FBD5E1AB641DC006F762F /* Gameplay.m */,
+				F01FBD5D1AB641DC006F762F /* GamePlay.h */,
+				F01FBD5E1AB641DC006F762F /* GamePlay.m */,
 				FA7A6ADE1ADF450E000A9FA6 /* GameOver.h */,
 				FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */,
 				B7378992180767190076A88C /* MainScene.h */,
@@ -872,7 +872,7 @@
 				FAD934F61ABA3BD80050B39E /* Item.m in Sources */,
 				FAD934FE1ABA576B0050B39E /* Bomb.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				F01FBD5F1AB641DC006F762F /* Gameplay.m in Sources */,
+				F01FBD5F1AB641DC006F762F /* GamePlay.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				FAF579BD1ABB7AE300879760 /* ItemManager.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,

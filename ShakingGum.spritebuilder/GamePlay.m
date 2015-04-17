@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "Gameplay.h"
+#import "GamePlay.h"
 #import "UITouch+CC.h"
 #import "Gum.h"
 #import "ItemManager.h"
@@ -14,7 +14,7 @@
 #import "Bomb.h"
 #import "ScoreItem.h"
 
-@implementation Gameplay
+@implementation GamePlay
 {
     Gum *gum;
     
@@ -32,8 +32,7 @@
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB
-{
- 
+{ 
     self.userInteractionEnabled = TRUE;
     
     // initialise Gum in GamePlay scene
