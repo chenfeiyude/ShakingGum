@@ -58,7 +58,6 @@
         [controller setInitialText:[NSString stringWithFormat:@"Check out my highscore of ShakingGum!: %ld #ShakingGum",(long)score]];
         
         //Adding the URL to the facebook post value from iOS
-        
         [controller addURL:[NSURL URLWithString:@"https://itunes.apple.com/"]];
     
         [app.navController presentViewController:controller animated:NO completion:Nil];
