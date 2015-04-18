@@ -19,7 +19,7 @@
 - (void)didLoadFromCCB
 {
     score = [[NSUserDefaults standardUserDefaults] integerForKey:@"FinalScore"];
-    [_finalScore setString:[NSString stringWithFormat:@"Score: %ld", (long)score]];
+    [_finalScore setString:[NSString stringWithFormat:@"%ld", (long)score]];
 
 }
 

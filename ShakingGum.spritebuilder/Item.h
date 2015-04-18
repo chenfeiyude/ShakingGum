@@ -11,7 +11,7 @@
 
 @interface Item : CCSprite {
     Status * status;
-    NSInteger speed;
+    CGPoint speed;
     BOOL isDead;
     BOOL isCrashing;
 }

@@ -73,10 +73,9 @@
         [_timeLabel setString:[NSString stringWithFormat:@"Time: %ld s", (long)[gum getRemainTime]]];
     }
     else {
-        NSLog(@"Game Over!!!!");
         // show share and score
         [[NSUserDefaults standardUserDefaults] setInteger:[gum getScore] forKey:@"FinalScore"];
-        [self gameOver];
+        [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.3];//call gameOver method after delay
     }
     
     // do every thing for the items here
@@ -101,17 +100,42 @@
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair GumHead:(CCNode *)gumHead Item:(CCNode *)itemObj
 {
+    NSLog(@"crashing gum head");
+    return [self handleCollision:YES Item:itemObj];
+}
+
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair GumBody:(CCNode *)gumBody Item:(CCNode *)itemObj
+{
+    NSLog(@"crashing gum body");
+    return [self handleCollision:NO Item:itemObj];
+}
+
+-(BOOL) handleCollision:(BOOL)isCrashingHead Item:(CCNode *)itemObj
+{
     Item* item = (Item* ) itemObj.parent;
-    NSLog(@"crashing");
     
     // show exploding
     CCParticleSystem *exploding = [item crashing];
     exploding.position = [item convertToWorldSpace:itemObj.position];
     [self addChild:exploding];
-    
-    // handle items, like add score, dead ...
-    [gum handleItem:item];
-    
+
+    [gum handleItem:item isCrashingWithHead:isCrashingHead];
+    switch (gum.getStatus.getStatus) {
+        case ADD_SCORE:
+            // show +1
+            
+            break;
+        case REDUCE_TIME:
+            // show -5s
+            
+            break;
+        case DEAD:
+            // show dead!!
+            
+            break;
+        default:
+            break;
+    }
     [item killItem];
     return YES;
 }

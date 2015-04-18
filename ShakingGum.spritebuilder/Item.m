@@ -49,8 +49,8 @@ static NSString* itemChildName = @"itemObj";
 
 -(void) initSpeed{
     //set a random speed here
-    speed = arc4random_uniform(100) + 1; // avoid 0 speed
-    [self move];
+    CGFloat yDirection = -1.f;
+    speed = CGPointMake(arc4random_uniform(20) * [self getRandomXDirection], yDirection * (arc4random_uniform(100) + 100));
 }
 
 -(BOOL) isDead {
@@ -63,13 +63,17 @@ static NSString* itemChildName = @"itemObj";
 }
 
 -(void) move{
-    CGPoint force = CGPointMake(arc4random_uniform(20) * [self getRandomDirection], speed * -1);
     CCNode *itemObj = [self getChildByName:itemChildName recursively:false];
-    [itemObj.physicsBody applyForce: force]; // give the item a speed, need to enable physics in spritbuilder
+    [itemObj.physicsBody applyForce: speed]; // give the item a speed, need to enable physics in spritbuilder
+//    [itemObj.physicsBody applyImpulse:speed];// apply a velocity immediately
+}
+
+-(void) update: (CCTime) delta {
+    [self move];
 }
 
 //get 1 for right and -1 for left direction
--(float) getRandomDirection{
+-(float) getRandomXDirection{
     float x_direction = arc4random_uniform(2);
     if (x_direction != 1.0f) {
         x_direction = -1.0f;
@@ -85,8 +89,9 @@ static NSString* itemChildName = @"itemObj";
 {
     if (itemObj != nil) {
         [itemObj.physicsBody setCollisionType:@"Item"];
-        [itemObj.physicsBody setFriction:1000.f];
-        [itemObj.physicsBody setMass:1000.f];
+        [itemObj.physicsBody setFriction:10.f];
+        [itemObj.physicsBody setMass:10.f];
+        [itemObj.physicsBody setAffectedByGravity:NO];
         [self addChild:itemObj z:0 name:itemChildName];
     }
 }

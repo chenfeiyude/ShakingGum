@@ -17,7 +17,7 @@
 -(CCNode *)getGumHead;
 -(CCNode *)getGumBody;
 -(CCNode *)getGumBase;
--(void) handleItem : (Item *) item;
+-(void) handleItem : (Item *) item isCrashingWithHead:(BOOL) isCrashingWithHead;
 -(NSInteger) getScore;
 -(Status *) getStatus;
 -(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition;

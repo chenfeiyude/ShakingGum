@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, GameObjStatus) {
     INIT = 0,
     DEAD = 1,
-    ADD_SCORE = 2
+    ADD_SCORE = 2,
+    REDUCE_TIME = 3
 };
 
 @interface Status : NSObject {

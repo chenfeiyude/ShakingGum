@@ -72,12 +72,28 @@
     return status;
 }
 
--(void) handleItem : (Item *) item
+-(void) handleItem : (Item *) item isCrashingWithHead:(BOOL) isCrashingWithHead
 {
-    Status* itemStatus = item.getStatus;
-    [status setStatus:[itemStatus getStatus]];
-    score += [[item getStatus] getValue];
-    NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE)", (long)[status getStatus]);
+    if (isCrashingWithHead) {
+        Status* itemStatus = item.getStatus;
+        [status setStatus:[itemStatus getStatus]];
+        score += [[item getStatus] getValue];
+        if ([status getStatus] == ADD_SCORE) {
+            remainTime += 5;//add 5s
+        }
+    }
+    else {
+        // collision with body will reduce the time
+        [status setStatus:REDUCE_TIME];
+        if(remainTime > 5) {
+            remainTime -= 5;
+        }
+        else {
+            remainTime = 0;
+        }
+    }
+    
+    NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE 3:REDUCE_TIME)", (long)[status getStatus]);
 }
 
 -(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition
@@ -99,6 +115,8 @@
     CCNode* bodyB = gumBase;
     for (int i = 0; i < 15; i++) {
         CCNode* bodyA = [CCBReader load:@"GumBody"];
+        [bodyA.physicsBody setCollisionType:@"GumBody"];
+        
         bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
         [gumBody addChild:bodyA];
         [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
@@ -120,7 +138,7 @@
 //    [gumHead.physicsBody setAffectedByGravity:FALSE];
 //    [gumBody.physicsBody setAffectedByGravity:FALSE];
     
-    [[gumHead physicsBody] setCollisionType:@"GumHead"];
+    [gumHead.physicsBody setCollisionType:@"GumHead"];
     
     [self addChild:gumHead];
     [self addChild:gumBody];
