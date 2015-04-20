@@ -5,6 +5,7 @@
 //  Created by Xiang Xu on 15/03/2015.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
+#import <CCActionInterval.h>
 
 #import "GamePlay.h"
 #import "UITouch+CC.h"
@@ -25,6 +26,8 @@
     CCLabelTTF *_scoreLabel;
     
     CCLabelTTF *_timeLabel;
+    
+    CCLabelTTF *_scoreSignLabel;
     
     CGPoint beginTouchLocation;
 }
@@ -123,14 +126,17 @@
     switch (gum.getStatus.getStatus) {
         case ADD_SCORE:
             // show +1
+            [self scoringAnimation:@"score +1"];
             
             break;
         case REDUCE_TIME:
             // show -5s
+            [self scoringAnimation:@"time -5s"];
             
             break;
         case DEAD:
             // show dead!!
+            [self scoringAnimation:@"Game Over"];
             
             break;
         default:
@@ -158,4 +164,25 @@
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
     [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
 }
+
+- (void)scoringAnimation: (NSString *)message
+{
+    NSLog(@"Message: %@", message);
+    CCActionFadeTo *fadeIN= [CCActionFadeTo actionWithDuration:0.0 opacity:255];
+    CCActionFadeTo *fadeOut= [CCActionFadeTo actionWithDuration:1.0 opacity:0];
+    CCActionCallBlock *showContent = [CCActionCallBlock actionWithBlock:^
+    {
+        [_scoreSignLabel setString:message];
+    }];
+    
+    CCActionCallBlock *hideContent= [CCActionCallBlock actionWithBlock:^
+    {
+        [_scoreSignLabel setString:@""];
+    }];
+   
+    CCActionSequence *sequence = [CCActionSequence actionWithArray: @[fadeIN, showContent, fadeOut, hideContent]];
+    [self runAction:sequence];
+}
+
+
 @end
