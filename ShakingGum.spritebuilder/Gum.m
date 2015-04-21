@@ -32,7 +32,7 @@
         
         CGSize screenSize = [CCDirector sharedDirector].viewSize;
         self.position = CGPointMake(screenSize.width/2, 0);
-        self.scale = (0.5);
+//        self.scale = (0.5);
     }
     
     return self;
@@ -119,15 +119,16 @@
         
         bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
         [gumBody addChild:bodyA];
-        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
-        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
+//        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
+        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, 0)];
         
         bodyB = bodyA;
     }
-    gumHead = [CCBReader load:@"GumBody"];
+    gumHead = [CCBReader load:@"GumHead"];
+//    gumHead = [CCBReader load:@"GumBody"];
     gumHead.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
-    [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
-    [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(26.5, -2.3)];
+//    [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
+    [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, -1.2)];
     
     //set lower friction and mass would be better to move
 //    [gumHead.physicsBody setFriction:0.f];

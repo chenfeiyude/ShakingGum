@@ -81,7 +81,12 @@
 		<key>Gum.ccbi</key>
 		<dict/>
 		<key>Images</key>
-		<dict/>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>trimSprites</key>
+			<true/>
+		</dict>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>

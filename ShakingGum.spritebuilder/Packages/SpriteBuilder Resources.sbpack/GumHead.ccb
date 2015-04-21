@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -74,40 +74,40 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>18.8359375</real>
-					<real>1.03515625</real>
+					<real>20.473745346069336</real>
+					<real>1.0182596445083618</real>
 				</array>
 				<array>
-					<real>19.16796875</real>
-					<real>7.328125</real>
+					<real>21.693952560424805</real>
+					<real>25.894081115722656</real>
 				</array>
 				<array>
-					<real>60.94921875</real>
-					<real>7.89453125</real>
+					<real>58.3822021484375</real>
+					<real>25.045576095581055</real>
 				</array>
 				<array>
-					<real>60.51953125</real>
-					<real>1.03515625</real>
+					<real>59.148674011230469</real>
+					<real>0.29023683071136475</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>60.51953125</real>
-						<real>1.03515625</real>
+						<real>59.148674011230469</real>
+						<real>0.29023683071136475</real>
 					</array>
 					<array>
-						<real>60.94921875</real>
-						<real>7.89453125</real>
+						<real>58.3822021484375</real>
+						<real>25.045576095581055</real>
 					</array>
 					<array>
-						<real>19.16796875</real>
-						<real>7.328125</real>
+						<real>21.693952560424805</real>
+						<real>25.894081115722656</real>
 					</array>
 					<array>
-						<real>18.8359375</real>
-						<real>1.03515625</real>
+						<real>20.473745346069336</real>
+						<real>1.0182596445083618</real>
 					</array>
 				</array>
 			</array>
@@ -168,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Images/GumBody.png</string>
+					<string>Images/GumHead.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -204,8 +204,6 @@
 				<array/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
