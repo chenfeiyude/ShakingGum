@@ -68,46 +68,46 @@
 			<key>dynamic</key>
 			<true/>
 			<key>elasticity</key>
-			<real>0.10000000149011612</real>
+			<real>0.20000000298023224</real>
 			<key>friction</key>
 			<real>0.30000001192092896</real>
 			<key>points</key>
 			<array>
 				<array>
-					<real>18.8359375</real>
-					<real>1.03515625</real>
+					<real>19.5078125</real>
+					<real>0.25390625</real>
 				</array>
 				<array>
-					<real>19.16796875</real>
-					<real>7.328125</real>
+					<real>18.5078125</real>
+					<real>7.64453125</real>
 				</array>
 				<array>
-					<real>60.94921875</real>
-					<real>7.89453125</real>
+					<real>62.1484375</real>
+					<real>7.6015625</real>
 				</array>
 				<array>
-					<real>60.51953125</real>
-					<real>1.03515625</real>
+					<real>61.84375</real>
+					<real>0.08984375</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>60.51953125</real>
-						<real>1.03515625</real>
+						<real>61.84375</real>
+						<real>0.08984375</real>
 					</array>
 					<array>
-						<real>60.94921875</real>
-						<real>7.89453125</real>
+						<real>62.1484375</real>
+						<real>7.6015625</real>
 					</array>
 					<array>
-						<real>19.16796875</real>
-						<real>7.328125</real>
+						<real>18.5078125</real>
+						<real>7.64453125</real>
 					</array>
 					<array>
-						<real>18.8359375</real>
-						<real>1.03515625</real>
+						<real>19.5078125</real>
+						<real>0.25390625</real>
 					</array>
 				</array>
 			</array>
@@ -143,7 +143,7 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.5</real>
+					<real>0.51298701763153076</real>
 					<real>0.5</real>
 				</array>
 			</dict>

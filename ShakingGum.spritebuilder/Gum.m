@@ -18,6 +18,7 @@
     NSInteger remainTime;
     Status* status;
     NSInteger moveSpeed;
+    NSInteger bodySize;
 }
 
 
@@ -31,7 +32,7 @@
         [self creatGumBody];
         
         CGSize screenSize = [CCDirector sharedDirector].viewSize;
-        self.position = CGPointMake(screenSize.width/2, 0);
+        self.position = CGPointMake(screenSize.width/2 - 10, 0);
 //        self.scale = (0.5);
     }
     
@@ -43,8 +44,9 @@
         status = [[Status alloc] init];
     }
     [status setStatus: INIT];
-    moveSpeed = 15;
+    moveSpeed = 10;
     remainTime = 100;// init remain time 100s
+    bodySize = 20;
 }
 
 -(CCNode *)getGumHead
@@ -100,9 +102,9 @@
 {
     CGPoint force = CGPointMake(direction.x * moveSpeed, direction.y * moveSpeed);
     [gumHead.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
-    for (CCNode* obj in gumBody.children) {
-        [obj.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
-    }
+//    for (CCNode* obj in gumBody.children) {
+//        [obj.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+//    }
 }
 
 -(void) creatGumBody
@@ -113,14 +115,14 @@
     gumBase.physicsBody.type = CCPhysicsBodyTypeStatic;
     
     CCNode* bodyB = gumBase;
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < bodySize; i++) {
         CCNode* bodyA = [CCBReader load:@"GumBody"];
         [bodyA.physicsBody setCollisionType:@"GumBody"];
         
         bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
         [gumBody addChild:bodyA];
 //        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
-        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, 0.5)];
+        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, 0)];
         
         bodyB = bodyA;
     }
