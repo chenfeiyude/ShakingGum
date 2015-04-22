@@ -120,7 +120,7 @@
         bodyA.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
         [gumBody addChild:bodyA];
 //        [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
-        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, 0)];
+        [CCPhysicsJoint connectedPivotJointWithBodyA:bodyA.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, 0.5)];
         
         bodyB = bodyA;
     }
@@ -128,7 +128,7 @@
 //    gumHead = [CCBReader load:@"GumBody"];
     gumHead.position = CGPointMake(bodyB.position.x, bodyB.position.y + bodyB.boundingBox.size.height);
 //    [CCPhysicsJoint connectedRotaryLimitJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody min:-10 max:10];
-    [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, -1.2)];
+    [CCPhysicsJoint connectedPivotJointWithBodyA:gumHead.physicsBody bodyB:bodyB.physicsBody anchorA:CGPointMake(40, 0.1)];
     
     //set lower friction and mass would be better to move
 //    [gumHead.physicsBody setFriction:0.f];
