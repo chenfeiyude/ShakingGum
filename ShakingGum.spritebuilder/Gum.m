@@ -43,7 +43,7 @@
         status = [[Status alloc] init];
     }
     [status setStatus: INIT];
-    moveSpeed = 20;
+    moveSpeed = 15;
     remainTime = 100;// init remain time 100s
 }
 
