@@ -96,6 +96,7 @@
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
 		F01FBD5F1AB641DC006F762F /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F01FBD5E1AB641DC006F762F /* GamePlay.m */; };
 		F028EB831AC22B190061D2FA /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F028EB821AC22B190061D2FA /* Gum.m */; };
+		F04635801AE7B42D00BA9207 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F046357F1AE7B42C00BA9207 /* iAd.framework */; };
 		F06800811AE13F59009C9E39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06800801AE13F59009C9E39 /* Social.framework */; };
 		FA7A6AE01ADF450E000A9FA6 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */; };
 		FAD934F61ABA3BD80050B39E /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934F51ABA3BD80050B39E /* Item.m */; };
@@ -226,6 +227,7 @@
 		F01FBD5E1AB641DC006F762F /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
 		F028EB811AC22B190061D2FA /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gum.h; sourceTree = "<group>"; };
 		F028EB821AC22B190061D2FA /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
+		F046357F1AE7B42C00BA9207 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		F06800801AE13F59009C9E39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FA7A6ADE1ADF450E000A9FA6 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
 		FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOver.m; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04635801AE7B42D00BA9207 /* iAd.framework in Frameworks */,
 				F06800811AE13F59009C9E39 /* Social.framework in Frameworks */,
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
@@ -522,6 +525,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F046357F1AE7B42C00BA9207 /* iAd.framework */,
 				F06800801AE13F59009C9E39 /* Social.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,

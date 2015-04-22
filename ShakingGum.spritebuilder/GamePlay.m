@@ -5,7 +5,6 @@
 //  Created by Xiang Xu on 15/03/2015.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
-#import <CCActionInterval.h>
 
 #import "GamePlay.h"
 #import "UITouch+CC.h"
@@ -14,6 +13,9 @@
 #import "Item.h"
 #import "Bomb.h"
 #import "ScoreItem.h"
+
+#import "AppDelegate.h"
+
 
 @implementation GamePlay
 {
@@ -30,6 +32,8 @@
     CCLabelTTF *_scoreSignLabel;
     
     CGPoint beginTouchLocation;
+
+    ADBannerView *_adBannerView;
 }
 
 
@@ -42,7 +46,6 @@
     gum = [[Gum alloc] init];
     
     [_physicsNode addChild:gum];
-    
     _physicsNode.collisionDelegate = self;
     
     itemManager = [ItemManager getInstance];
@@ -50,6 +53,23 @@
     [self schedule:@selector(addItems:) interval:1];
 
     [self schedule:@selector(reduceTime:) interval:1];
+    
+    // iAd initialise
+    _adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+    _adBannerView.delegate = self;
+    
+    CGSize screenSize = [CCDirector sharedDirector].viewSize;
+    CGRect frame = _adBannerView.frame;
+    frame.origin.y = screenSize.height-_adBannerView.frame.size.height;
+    NSLog(@"height: %f" , _adBannerView.frame.size.height);
+    frame.origin.x = 0.0f;
+    
+    _adBannerView.frame = frame;
+    
+    [_adBannerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    
+    AppController *app = (((AppController*) [UIApplication sharedApplication].delegate));
+    [app.navController.view addSubview:_adBannerView];
 }
 
 
@@ -126,7 +146,7 @@
     switch (gum.getStatus.getStatus) {
         case ADD_SCORE:
             // show +1
-            [self scoringAnimation:@"score +1"];
+            [self scoringAnimation:@"score +1, time +5s"];
             
             break;
         case REDUCE_TIME:
@@ -162,27 +182,50 @@
 -(void) gameOver
 {
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
+    
+    // Hide the ad banner
+    _adBannerView.alpha = 0.0;
+    
     [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
 }
 
 - (void)scoringAnimation: (NSString *)message
 {
-    NSLog(@"Message: %@", message);
-    CCActionFadeTo *fadeIN= [CCActionFadeTo actionWithDuration:0.0 opacity:255];
-    CCActionFadeTo *fadeOut= [CCActionFadeTo actionWithDuration:1.0 opacity:0];
     CCActionCallBlock *showContent = [CCActionCallBlock actionWithBlock:^
     {
         [_scoreSignLabel setString:message];
     }];
+    
+    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 5.0)];
+    CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0.0 position:CGPointMake(0, -5.0)];
+ 
     
     CCActionCallBlock *hideContent= [CCActionCallBlock actionWithBlock:^
     {
         [_scoreSignLabel setString:@""];
     }];
    
-    CCActionSequence *sequence = [CCActionSequence actionWithArray: @[fadeIN, showContent, fadeOut, hideContent]];
-    [self runAction:sequence];
+    CCActionSequence *sequence = [CCActionSequence actionWithArray: @[showContent, moveUp, hideContent, moveDown]];
+    [_scoreSignLabel runAction:sequence];
 }
 
+#pragma mark iAd Delegate
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    // Hide the ad banner.
+    [UIView animateWithDuration:0.5 animations:^
+    {
+        _adBannerView.alpha = 0.0;
+    }];
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    // Hide the ad banner.
+//    [UIView animateWithDuration:0.5 animations:^
+//    {
+//        _adBannerView.alpha = 0.0;
+//    }];
+}
 
 @end
