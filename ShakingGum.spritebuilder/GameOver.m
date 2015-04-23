@@ -9,7 +9,7 @@
 #import "GameOver.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
-
+#import <CCTextureCache.h>
 @implementation GameOver
 {
     CCLabelTTF *_finalScore;
@@ -85,6 +85,13 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+-(void)onExit
+{
+    [super onExit];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
 }
 
 @end

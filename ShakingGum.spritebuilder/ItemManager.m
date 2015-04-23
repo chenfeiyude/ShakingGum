@@ -123,4 +123,14 @@
     
     [currentItems removeObjectsInArray:deadItems];
 }
+
+-(void) dealloc
+{
+    if (currentItems != nil) {
+        for (id currentItem in currentItems) {
+            [currentItem removeFromParentAndCleanup:YES];
+        }
+        [currentItems removeAllObjects];
+    }
+}
 @end

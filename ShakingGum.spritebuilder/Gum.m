@@ -164,4 +164,17 @@
     return remainTime;
 }
 
+-(void) dealloc
+{
+    if (gumHead != nil) {
+        [gumHead removeFromParentAndCleanup:YES];
+    }
+    if (gumBody != nil) {
+        [gumBody removeFromParentAndCleanup:YES];
+    }
+    if (gumBase != nil) {
+        [gumBase removeFromParentAndCleanup:YES];
+    }
+}
+
 @end

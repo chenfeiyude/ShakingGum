@@ -16,13 +16,13 @@
 #import "SoundManager.h"
 
 #import "AppDelegate.h"
-
+#import <CCTextureCache.h>
 
 @implementation GamePlay
 {
     Gum *gum;
     
-    ItemManager *itemManager;
+    ItemManager *_itemManager;
     
     CCPhysicsNode * _physicsNode;
     
@@ -49,7 +49,7 @@
     [_physicsNode addChild:gum];
     _physicsNode.collisionDelegate = self;
     
-    itemManager = [ItemManager getInstance];
+    _itemManager = [ItemManager getInstance];
     
     [self schedule:@selector(addItems:) interval:1];
 
@@ -121,7 +121,7 @@
         
     }
     
-    [itemManager deleteDeadItems];
+    [_itemManager deleteDeadItems];
 }
 
 
@@ -175,7 +175,7 @@
 
 -(void) addItems:(CCTime)delta {
     //create items
-    id newItem = [itemManager createRandomItem];
+    id newItem = [_itemManager createRandomItem];
     if (newItem != nil) {
         [_physicsNode addChild:newItem];
     }
@@ -188,6 +188,7 @@
 
 -(void) gameOver
 {
+    [_itemManager clearItems];
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
     
     // Hide the ad banner
@@ -248,5 +249,13 @@
         _adBannerView.alpha = 0.0;
     }];
 }
+
+-(void)onExit
+{
+    [super onExit];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
+}
+
 
 @end

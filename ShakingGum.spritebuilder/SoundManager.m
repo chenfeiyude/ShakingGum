@@ -10,41 +10,61 @@
 
 @implementation SoundManager
 {
-    NSString *soundPath;
-    NSURL *soundURL;
-    AVAudioPlayer *player;
+    NSMapTable *players;
+    
+    NSString *KEY_SOCRE;
+    NSString *KEY_EXPLODE;
+    NSString *KEY_DEAD;
 }
 
+-(id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        KEY_SOCRE   = @"scoreSound";
+        KEY_EXPLODE = @"explodeSound";
+        KEY_DEAD    = @"deadSound";
+        players = [NSMapTable new];
+        [self addSoundSource:@"ScoreSound" type:@"wav" name:KEY_SOCRE];
+        [self addSoundSource:@"ExplodeSound" type:@"wav" name:KEY_EXPLODE];
+        [self addSoundSource:@"GameEndingSound" type:@"wav" name:KEY_DEAD];
+    }
+    
+    return self;
+}
+
+-(void) addSoundSource : (NSString*) path type:(NSString*)sourceType name:(NSString*)name
+{
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:path ofType:sourceType];
+    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+    
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+    
+    [players setObject:player forKey:name];
+}
 
 - (void)playScoringSound
 {
-    soundPath = [[NSBundle mainBundle] pathForResource:@"ScoreSound" ofType:@"wav"];
-    soundURL = [NSURL fileURLWithPath:soundPath];
-    
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    
-    [player play];
+    [(AVAudioPlayer*)[players objectForKey:KEY_SOCRE] play];
 }
 
 - (void)playExplodingSound
 {
-    soundPath = [[NSBundle mainBundle] pathForResource:@"ExplodeSound" ofType:@"wav"];
-    soundURL = [NSURL fileURLWithPath:soundPath];
-    
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    
-    [player play];
+    [(AVAudioPlayer*)[players objectForKey:KEY_EXPLODE] play];
 }
 
 - (void)playGameEndSound
 {
-    soundPath = [[NSBundle mainBundle] pathForResource:@"GameEndingSound" ofType:@"wav"];
-    soundURL = [NSURL fileURLWithPath:soundPath];
-    
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    
-    [player play];
+    [(AVAudioPlayer*)[players objectForKey:KEY_DEAD] play];
 }
 
+-(void)dealloc
+{
+    if (players != nil) {
+        [players removeAllObjects];
+    }
+}
 
 @end
