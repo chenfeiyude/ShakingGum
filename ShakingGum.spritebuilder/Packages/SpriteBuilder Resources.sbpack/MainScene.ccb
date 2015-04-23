@@ -330,7 +330,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Images/PlayButton.png</string>
 						</array>
 					</dict>
 					<dict>

@@ -13,6 +13,7 @@
 -(void)onExit
 {
     [super onExit];
+    [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
 }

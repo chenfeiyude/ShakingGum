@@ -170,13 +170,17 @@
 {
     if (gumHead != nil) {
         [gumHead removeFromParentAndCleanup:YES];
+        [gumHead removeAllChildren];
     }
     if (gumBody != nil) {
         [gumBody removeFromParentAndCleanup:YES];
+        [gumBody removeAllChildren];
     }
     if (gumBase != nil) {
         [gumBase removeFromParentAndCleanup:YES];
+        [gumBase removeAllChildren];
     }
+    
 }
 
 @end

@@ -129,6 +129,7 @@
     if (currentItems != nil) {
         for (id currentItem in currentItems) {
             [currentItem removeFromParentAndCleanup:YES];
+            [currentItem removeAllChildren];
         }
         [currentItems removeAllObjects];
     }

@@ -19,7 +19,7 @@
 - (void)didLoadFromCCB
 {
     score = [[NSUserDefaults standardUserDefaults] integerForKey:@"FinalScore"];
-    [_finalScore setString:[NSString stringWithFormat:@"%ld", (long)score]];
+    [_finalScore setString:[NSString stringWithFormat:@"x %ld", (long)score]];
 
 }
 
@@ -90,6 +90,7 @@
 -(void)onExit
 {
     [super onExit];
+    [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
 }

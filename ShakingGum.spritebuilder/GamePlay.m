@@ -95,7 +95,7 @@
 // This method is running every frame
 - (void)update:(CCTime)delta {
     if ([[gum getStatus] getStatus] != DEAD) {
-        [_scoreLabel setString:[NSString stringWithFormat:@"Score: %ld", (long)[gum getScore]]];
+        [_scoreLabel setString:[NSString stringWithFormat:@"x %ld", (long)[gum getScore]]];
         [_timeLabel setString:[NSString stringWithFormat:@"Time: %ld s", (long)[gum getRemainTime]]];
     }
     else {
@@ -127,13 +127,11 @@
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair GumHead:(CCNode *)gumHead Item:(CCNode *)itemObj
 {
-    NSLog(@"crashing gum head");
     return [self handleCollision:YES Item:itemObj];
 }
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair GumBody:(CCNode *)gumBody Item:(CCNode *)itemObj
 {
-    NSLog(@"crashing gum body");
     return [self handleCollision:NO Item:itemObj];
 }
 
@@ -162,7 +160,7 @@
                 break;
             case DEAD:
                 // show dead!!
-                [self scoringAnimation:@"Game Over"];
+                [self scoringAnimation:@"Dead"];
                 [_soundManager playGameEndSound];
                 
                 break;
@@ -254,6 +252,8 @@
 -(void)onExit
 {
     [super onExit];
+    [_physicsNode removeAllChildren];
+    [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
 }
