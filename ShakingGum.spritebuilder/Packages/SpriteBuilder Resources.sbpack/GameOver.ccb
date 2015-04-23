@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>117.78944396972656</real>
-							<real>432</real>
+							<real>161.29876708984375</real>
+							<real>426.61483764648438</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -109,7 +109,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Shaking</string>
+							<string>Shaking Gum</string>
 							<false/>
 						</array>
 					</dict>
@@ -292,7 +292,7 @@
 						<key>value</key>
 						<array>
 							<real>183.29876708984375</real>
-							<real>240.5</real>
+							<real>272.5</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1165,7 +1165,7 @@
 						<key>value</key>
 						<array>
 							<real>122.79876708984375</real>
-							<real>246</real>
+							<real>281</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1272,8 +1272,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>247.86683654785156</real>
-							<real>435.30743408203125</real>
+							<real>161.29876708984375</real>
+							<real>481.30743408203125</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
