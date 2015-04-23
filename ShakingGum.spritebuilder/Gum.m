@@ -44,8 +44,8 @@
         status = [[Status alloc] init];
     }
     [status setStatus: INIT];
-    moveSpeed = 10;
-    remainTime = 100;// init remain time 100s
+    moveSpeed = 5;
+    remainTime = 120;// init remain time 100s
     bodySize = 20;
 }
 
@@ -102,9 +102,9 @@
 {
     CGPoint force = CGPointMake(direction.x * moveSpeed, direction.y * moveSpeed);
     [gumHead.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
-//    for (CCNode* obj in gumBody.children) {
-//        [obj.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
-//    }
+    for (CCNode* obj in gumBody.children) {
+        [obj.physicsBody applyForce: force]; // give the gum a speed, need to enable physics in spritbuilder
+    }
 }
 
 -(void) creatGumBody

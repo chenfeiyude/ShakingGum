@@ -95,6 +95,10 @@
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
 		F01FBD5F1AB641DC006F762F /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F01FBD5E1AB641DC006F762F /* GamePlay.m */; };
+		F022D5A61AE8FA8B00142EDF /* ScoreSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F022D5A51AE8FA8B00142EDF /* ScoreSound.wav */; };
+		F022D5A91AE8FBA400142EDF /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F022D5A81AE8FBA400142EDF /* SoundManager.m */; };
+		F022D5AF1AE90BA200142EDF /* ExplodeSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F022D5AE1AE90BA200142EDF /* ExplodeSound.wav */; };
+		F022D5B31AE90DA000142EDF /* GameEndingSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F022D5B21AE90DA000142EDF /* GameEndingSound.wav */; };
 		F028EB831AC22B190061D2FA /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F028EB821AC22B190061D2FA /* Gum.m */; };
 		F04635801AE7B42D00BA9207 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F046357F1AE7B42C00BA9207 /* iAd.framework */; };
 		F06800811AE13F59009C9E39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06800801AE13F59009C9E39 /* Social.framework */; };
@@ -225,6 +229,11 @@
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 		F01FBD5D1AB641DC006F762F /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
 		F01FBD5E1AB641DC006F762F /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
+		F022D5A51AE8FA8B00142EDF /* ScoreSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ScoreSound.wav; sourceTree = "<group>"; };
+		F022D5A71AE8FBA400142EDF /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		F022D5A81AE8FBA400142EDF /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		F022D5AE1AE90BA200142EDF /* ExplodeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ExplodeSound.wav; sourceTree = "<group>"; };
+		F022D5B21AE90DA000142EDF /* GameEndingSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameEndingSound.wav; sourceTree = "<group>"; };
 		F028EB811AC22B190061D2FA /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gum.h; sourceTree = "<group>"; };
 		F028EB821AC22B190061D2FA /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
 		F046357F1AE7B42C00BA9207 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -284,6 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77F1B3A17B978D7009739AE /* AVFoundation.framework in Frameworks */,
 				F04635801AE7B42D00BA9207 /* iAd.framework in Frameworks */,
 				F06800811AE13F59009C9E39 /* Social.framework in Frameworks */,
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
@@ -292,7 +302,6 @@
 				B77F1B3417B978D7009739AE /* OpenGLES.framework in Frameworks */,
 				B77F1B3617B978D7009739AE /* OpenAL.framework in Frameworks */,
 				B77F1B3817B978D7009739AE /* AudioToolbox.framework in Frameworks */,
-				B77F1B3A17B978D7009739AE /* AVFoundation.framework in Frameworks */,
 				B77F1B3C17B978D7009739AE /* UIKit.framework in Frameworks */,
 				B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */,
 				B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */,
@@ -555,6 +564,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F022D5A21AE8FA7F00142EDF /* Sounds */,
 				7A40366119DDF8C2007B6E8F /* Platforms */,
 				5B12100D197483EE004C1E1D /* res */,
 				B73789911807667A0076A88C /* Icons */,
@@ -576,6 +586,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F022D5A21AE8FA7F00142EDF /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F022D5B21AE90DA000142EDF /* GameEndingSound.wav */,
+				F022D5AE1AE90BA200142EDF /* ExplodeSound.wav */,
+				F022D5A51AE8FA8B00142EDF /* ScoreSound.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		F02681601ACC02B5006DECD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +611,8 @@
 				FAD935001ABA57A30050B39E /* ScoreItem.m */,
 				FAF579BB1ABB7AE300879760 /* ItemManager.h */,
 				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
+				F022D5A71AE8FBA400142EDF /* SoundManager.h */,
+				F022D5A81AE8FBA400142EDF /* SoundManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -788,6 +810,8 @@
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
+				F022D5B31AE90DA000142EDF /* GameEndingSound.wav in Resources */,
+				F022D5AF1AE90BA200142EDF /* ExplodeSound.wav in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
@@ -799,6 +823,7 @@
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
+				F022D5A61AE8FA8B00142EDF /* ScoreSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +907,7 @@
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				F028EB831AC22B190061D2FA /* Gum.m in Sources */,
 				FAD935011ABA57A30050B39E /* ScoreItem.m in Sources */,
+				F022D5A91AE8FBA400142EDF /* SoundManager.m in Sources */,
 				FAD934FB1ABA3CD00050B39E /* Status.m in Sources */,
 				FA7A6AE01ADF450E000A9FA6 /* GameOver.m in Sources */,
 			);

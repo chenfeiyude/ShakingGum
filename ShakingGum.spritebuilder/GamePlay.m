@@ -13,6 +13,7 @@
 #import "Item.h"
 #import "Bomb.h"
 #import "ScoreItem.h"
+#import "SoundManager.h"
 
 #import "AppDelegate.h"
 
@@ -29,11 +30,11 @@
     
     CCLabelTTF *_timeLabel;
     
-    CCLabelTTF *_scoreSignLabel;
-    
     CGPoint beginTouchLocation;
 
     ADBannerView *_adBannerView;
+    
+    SoundManager *_soundManager;
 }
 
 
@@ -53,6 +54,8 @@
     [self schedule:@selector(addItems:) interval:1];
 
     [self schedule:@selector(reduceTime:) interval:1];
+    
+    _soundManager = [[SoundManager alloc] init];
     
     // iAd initialise
     _adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
@@ -98,6 +101,7 @@
     else {
         // show share and score
         [[NSUserDefaults standardUserDefaults] setInteger:[gum getScore] forKey:@"FinalScore"];
+        [_soundManager playGameEndSound];
         [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.3];//call gameOver method after delay
     }
     
@@ -147,16 +151,19 @@
         case ADD_SCORE:
             // show +1
             [self scoringAnimation:@"score +1, time +5s"];
+            [_soundManager playScoringSound];
             
             break;
         case REDUCE_TIME:
             // show -5s
             [self scoringAnimation:@"time -5s"];
+            [_soundManager playExplodingSound];
             
             break;
         case DEAD:
             // show dead!!
             [self scoringAnimation:@"Game Over"];
+            [_soundManager playGameEndSound];
             
             break;
         default:
@@ -185,27 +192,41 @@
     
     // Hide the ad banner
     _adBannerView.alpha = 0.0;
-    
     [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
 }
 
 - (void)scoringAnimation: (NSString *)message
 {
+    CCLabelTTF *_scoreSignLabel = [[CCLabelTTF alloc] initWithString:message fontName:@"MarkerFelt-Wide" fontSize:25.0];
+    _scoreSignLabel.fontColor = _scoreLabel.fontColor;
+    
+    
+    CGSize screenSize = [CCDirector sharedDirector].viewSize;
+    _scoreSignLabel.position = ccp(screenSize.width/2, screenSize.height/2 + 30);
+    
+    [self addChild:_scoreSignLabel];
+    
     CCActionCallBlock *showContent = [CCActionCallBlock actionWithBlock:^
     {
         [_scoreSignLabel setString:message];
     }];
     
-    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 5.0)];
-    CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0 position:CGPointMake(0, -5.0)];
+    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 10.0)];
+    CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0 position:CGPointMake(0, -10.0)];
  
     
     CCActionCallBlock *hideContent= [CCActionCallBlock actionWithBlock:^
     {
         [_scoreSignLabel setString:@""];
     }];
+    
+    CCActionCallBlock *remvoeLabel = [CCActionCallBlock actionWithBlock:^
+    {
+        [self removeChild:_scoreSignLabel];
+    }];
+
    
-    CCActionSequence *sequence = [CCActionSequence actionWithArray: @[showContent, moveUp, hideContent, moveDown]];
+    CCActionSequence *sequence = [CCActionSequence actionWithArray: @[showContent, moveUp, hideContent, moveDown, remvoeLabel]];
     [_scoreSignLabel runAction:sequence];
 }
 
@@ -222,10 +243,10 @@
 - (void)bannerViewActionDidFinish:(ADBannerView *)banner
 {
     // Hide the ad banner.
-//    [UIView animateWithDuration:0.5 animations:^
-//    {
-//        _adBannerView.alpha = 0.0;
-//    }];
+    [UIView animateWithDuration:0.5 animations:^
+    {
+        _adBannerView.alpha = 0.0;
+    }];
 }
 
 @end
