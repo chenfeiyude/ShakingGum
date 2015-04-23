@@ -86,12 +86,14 @@
     }
     else {
         // collision with body will reduce the time
-        [status setStatus:REDUCE_TIME];
-        if(remainTime > 5) {
-            remainTime -= 5;
-        }
-        else {
-            remainTime = 0;
+        if ([item isKindOfClass:[Bomb class]]) {
+            [status setStatus:REDUCE_TIME];
+            if(remainTime > 5) {
+                remainTime -= 5;
+            }
+            else {
+                remainTime = 0;
+            }
         }
     }
     

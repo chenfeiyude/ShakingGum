@@ -141,35 +141,36 @@
 {
     Item* item = (Item* ) itemObj.parent;
     
-    // show exploding
-    CCParticleSystem *exploding = [item crashing];
-    exploding.position = [item convertToWorldSpace:itemObj.position];
-    [self addChild:exploding];
-
-    [gum handleItem:item isCrashingWithHead:isCrashingHead];
-    switch (gum.getStatus.getStatus) {
-        case ADD_SCORE:
-            // show +1
-            [self scoringAnimation:@"score +1, time +5s"];
-            [_soundManager playScoringSound];
-            
-            break;
-        case REDUCE_TIME:
-            // show -5s
-            [self scoringAnimation:@"time -5s"];
-            [_soundManager playExplodingSound];
-            
-            break;
-        case DEAD:
-            // show dead!!
-            [self scoringAnimation:@"Game Over"];
-            [_soundManager playGameEndSound];
-            
-            break;
-        default:
-            break;
+    if ([item isKindOfClass:[Bomb class]] || isCrashingHead) {
+        // show exploding when crash with head or item is a bomb
+        CCParticleSystem *exploding = [item crashing];
+        exploding.position = [item convertToWorldSpace:itemObj.position];
+        [self addChild:exploding];
+        [gum handleItem:item isCrashingWithHead:isCrashingHead];
+        switch (gum.getStatus.getStatus) {
+            case ADD_SCORE:
+                // show +1
+                [self scoringAnimation:@"score +1, time +5s"];
+                [_soundManager playScoringSound];
+                
+                break;
+            case REDUCE_TIME:
+                // show -5s
+                [self scoringAnimation:@"time -5s"];
+                [_soundManager playExplodingSound];
+                
+                break;
+            case DEAD:
+                // show dead!!
+                [self scoringAnimation:@"Game Over"];
+                [_soundManager playGameEndSound];
+                
+                break;
+            default:
+                break;
+        }
+        [item killItem];
     }
-    [item killItem];
     return YES;
 }
 

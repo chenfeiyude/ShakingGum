@@ -47,22 +47,35 @@
 
 - (void)playScoringSound
 {
+    [(AVAudioPlayer*)[players objectForKey:KEY_SOCRE] prepareToPlay];
     [(AVAudioPlayer*)[players objectForKey:KEY_SOCRE] play];
 }
 
 - (void)playExplodingSound
 {
+    [(AVAudioPlayer*)[players objectForKey:KEY_EXPLODE] prepareToPlay];
     [(AVAudioPlayer*)[players objectForKey:KEY_EXPLODE] play];
 }
 
 - (void)playGameEndSound
 {
+    [(AVAudioPlayer*)[players objectForKey:KEY_DEAD] prepareToPlay];
     [(AVAudioPlayer*)[players objectForKey:KEY_DEAD] play];
+}
+
+-(void)stopAllSound
+{
+    if (players != nil) {
+        for (id player in players) {
+            [player stop];
+        }
+    }
 }
 
 -(void)dealloc
 {
     if (players != nil) {
+        [self stopAllSound];
         [players removeAllObjects];
     }
 }
