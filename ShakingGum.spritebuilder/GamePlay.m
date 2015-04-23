@@ -197,7 +197,7 @@
     }];
     
     CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 5.0)];
-    CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0.0 position:CGPointMake(0, -5.0)];
+    CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0 position:CGPointMake(0, -5.0)];
  
     
     CCActionCallBlock *hideContent= [CCActionCallBlock actionWithBlock:^
