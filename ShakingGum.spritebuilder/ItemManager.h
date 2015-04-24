@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger, ItemType) {
     BOMB,
     SCORE_ITEM,
+    TIME_ITEM,
     NONE,
     enum_count,
 };

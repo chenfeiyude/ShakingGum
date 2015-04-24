@@ -16,6 +16,7 @@
     
     NSInteger score;
     NSInteger remainTime;
+    NSInteger MAX_REMAIN_TIME;
     Status* status;
     NSInteger moveSpeed;
     NSInteger bodySize;
@@ -45,7 +46,8 @@
     }
     [status setStatus: INIT];
     moveSpeed = 5;
-    remainTime = 120;// init remain time 100s
+    MAX_REMAIN_TIME = 100;
+    remainTime = MAX_REMAIN_TIME;// init remain time 100s
     bodySize = 20;
 }
 
@@ -79,9 +81,14 @@
     if (isCrashingWithHead) {
         Status* itemStatus = item.getStatus;
         [status setStatus:[itemStatus getStatus]];
-        score += [[item getStatus] getValue];
-        if ([status getStatus] == ADD_SCORE) {
-            remainTime += 5;//add 5s
+        if ([item isKindOfClass:[ScoreItem class]]) {
+            score += [[item getStatus] getValue];
+        }
+        else if ([item isKindOfClass:[TimeItem class]]) {
+            remainTime += [[item getStatus] getValue];
+            if (remainTime > MAX_REMAIN_TIME) {
+                remainTime = MAX_REMAIN_TIME;
+            }
         }
     }
     else {

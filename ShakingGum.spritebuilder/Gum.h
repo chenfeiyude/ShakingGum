@@ -11,7 +11,7 @@
 #import "ScoreItem.h"
 #import "Bomb.h"
 #import "Status.h"
-
+#import "TimeItem.h"
 @interface Gum : CCSprite
 
 -(CCNode *)getGumHead;

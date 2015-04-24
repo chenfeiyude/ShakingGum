@@ -9,6 +9,7 @@
 #import "ItemManager.h"
 #import "Bomb.h"
 #import "ScoreItem.h"
+#import "TimeItem.h"
 
 @implementation ItemManager
 
@@ -75,6 +76,12 @@
                 [currentItems addObject: scoreItem];
                 return scoreItem;
             }
+            case TIME_ITEM:
+            {
+                TimeItem *timeItem = [[TimeItem alloc] init];
+                [currentItems addObject: timeItem];
+                return timeItem;
+            }
             default:
                 return nil;
         }
@@ -90,6 +97,7 @@
         NSInteger range = maxItemSize / enum_count;
         NSInteger bomb_range = range * ( BOMB + 1 ); // BOMB = 0 in enum set
         NSInteger score_range = range * ( SCORE_ITEM + 1);
+        NSInteger time_range = range * (TIME_ITEM + 1);
         NSInteger bomb_number = 0;
         for (id item in currentItems) {
             if ([item isKindOfClass:[Bomb class]]) {
@@ -101,6 +109,9 @@
         }
         else if (random > bomb_range && random <= score_range) {
             itemType = SCORE_ITEM;
+        }
+        else if (random > score_range && random <= time_range) {
+            itemType = TIME_ITEM;
         }
         return [self createItem: itemType];
     }

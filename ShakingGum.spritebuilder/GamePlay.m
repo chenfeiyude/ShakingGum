@@ -148,13 +148,17 @@
         switch (gum.getStatus.getStatus) {
             case ADD_SCORE:
                 // show +1
-                [self scoringAnimation:@"score +1, time +5s"];
+                [self scoringAnimation:@"+1"];
                 [_soundManager playScoringSound];
                 
                 break;
+            case ADD_TIME:
+                [self scoringAnimation:@"+5s"];
+                [_soundManager playScoringSound];
+                break;
             case REDUCE_TIME:
                 // show -5s
-                [self scoringAnimation:@"time -5s"];
+                [self scoringAnimation:@"-5s"];
                 [_soundManager playExplodingSound];
                 
                 break;
@@ -211,7 +215,7 @@
         [_scoreSignLabel setString:message];
     }];
     
-    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 10.0)];
+    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 20.0)];
     CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0 position:CGPointMake(0, -10.0)];
  
     
