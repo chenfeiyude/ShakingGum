@@ -57,9 +57,12 @@
     
     _soundManager = [[SoundManager alloc] init];
     
-    // iAd initialise
-    _adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-    _adBannerView.delegate = self;
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"whetherDisplayAd"])
+    {
+        // iAd initialise
+        _adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+        _adBannerView.delegate = self;
+    }
     
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     CGRect frame = _adBannerView.frame;
@@ -237,10 +240,8 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     // Hide the ad banner.
-    [UIView animateWithDuration:0.5 animations:^
-    {
-        _adBannerView.alpha = 0.0;
-    }];
+    _adBannerView.alpha = 0.0;
+
 }
 
 - (void)bannerViewActionDidFinish:(ADBannerView *)banner
@@ -249,6 +250,8 @@
     [UIView animateWithDuration:0.5 animations:^
     {
         _adBannerView.alpha = 0.0;
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"whetherDisplayAd"];
     }];
 }
 

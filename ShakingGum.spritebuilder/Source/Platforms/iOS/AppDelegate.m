@@ -54,6 +54,14 @@
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
+    // Display iAd only when the user open the app, once user click the ad, ad will be remvoed until user close the app
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"whetherDisplayAd"];
+
+//    if([[NSUserDefaults standardUserDefaults] boolForKey:@"whetherDisplayAd"] != YES)
+//    {
+//        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"whetherDisplayAd"];
+//    }
+    
     return YES;
 }
 

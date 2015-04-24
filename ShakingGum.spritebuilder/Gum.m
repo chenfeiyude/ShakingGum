@@ -78,33 +78,36 @@
 
 -(void) handleItem : (Item *) item isCrashingWithHead:(BOOL) isCrashingWithHead
 {
-    if (isCrashingWithHead) {
-        Status* itemStatus = item.getStatus;
-        [status setStatus:[itemStatus getStatus]];
-        if ([item isKindOfClass:[ScoreItem class]]) {
-            score += [[item getStatus] getValue];
-        }
-        else if ([item isKindOfClass:[TimeItem class]]) {
-            remainTime += [[item getStatus] getValue];
-            if (remainTime > MAX_REMAIN_TIME) {
-                remainTime = MAX_REMAIN_TIME;
+    if([status getStatus] != DEAD)
+    {
+        if (isCrashingWithHead) {
+            Status* itemStatus = item.getStatus;
+            [status setStatus:[itemStatus getStatus]];
+            if ([item isKindOfClass:[ScoreItem class]]) {
+                score += [[item getStatus] getValue];
+            }
+            else if ([item isKindOfClass:[TimeItem class]]) {
+                remainTime += [[item getStatus] getValue];
+                if (remainTime > MAX_REMAIN_TIME) {
+                    remainTime = MAX_REMAIN_TIME;
+                }
             }
         }
+        else {
+            // collision with body will reduce the time
+            if ([item isKindOfClass:[Bomb class]]) {
+                [status setStatus:REDUCE_TIME];
+                if(remainTime > 5) {
+                    remainTime -= 5;
+                }
+                else {
+                    remainTime = 0;
+                }
+            }
+        }
+        
+        NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE 3:REDUCE_TIME)", (long)[status getStatus]);
     }
-    else {
-        // collision with body will reduce the time
-        if ([item isKindOfClass:[Bomb class]]) {
-            [status setStatus:REDUCE_TIME];
-            if(remainTime > 5) {
-                remainTime -= 5;
-            }
-            else {
-                remainTime = 0;
-            }
-        }
-    }
-    
-    NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE 3:REDUCE_TIME)", (long)[status getStatus]);
 }
 
 -(void) move : (CGPoint) direction beginTouchLocation: (CGPoint) touchPosition
