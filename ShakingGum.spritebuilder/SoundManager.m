@@ -74,8 +74,8 @@
 
 -(void)dealloc
 {
-    if (players != nil) {
-        [self stopAllSound];
+    if (players != nil)
+    {
         [players removeAllObjects];
     }
 }
