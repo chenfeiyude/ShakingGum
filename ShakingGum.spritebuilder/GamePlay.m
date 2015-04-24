@@ -64,7 +64,6 @@
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     CGRect frame = _adBannerView.frame;
     frame.origin.y = screenSize.height-_adBannerView.frame.size.height;
-    NSLog(@"height: %f" , _adBannerView.frame.size.height);
     frame.origin.x = 0.0f;
     
     _adBannerView.frame = frame;

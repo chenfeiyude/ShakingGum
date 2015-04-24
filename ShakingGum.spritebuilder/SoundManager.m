@@ -47,11 +47,13 @@
 
 - (void)playScoringSound
 {
+    [(AVAudioPlayer*)[players objectForKey:KEY_SOCRE] setCurrentTime:0.0];
     [(AVAudioPlayer*)[players objectForKey:KEY_SOCRE] play];
 }
 
 - (void)playExplodingSound
 {
+    [(AVAudioPlayer*)[players objectForKey:KEY_EXPLODE] setCurrentTime:0.0];
     [(AVAudioPlayer*)[players objectForKey:KEY_EXPLODE] play];
 }
 
@@ -63,7 +65,8 @@
 -(void)stopAllSound
 {
     if (players != nil) {
-        for (id player in players) {
+        for (id player in players)
+        {
             [player stop];
         }
     }
