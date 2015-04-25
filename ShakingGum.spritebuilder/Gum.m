@@ -28,7 +28,6 @@
     
     if(self)
     {
-        NSLog(@"Gum initialised");
         [self initStatus];
         [self creatGumBody];
         

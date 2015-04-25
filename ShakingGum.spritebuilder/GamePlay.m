@@ -103,6 +103,7 @@
     else {
         // show share and score
         [[NSUserDefaults standardUserDefaults] setInteger:[gum getScore] forKey:@"FinalScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [_soundManager playGameEndSound];
         [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.3];//call gameOver method after delay
     }
@@ -252,6 +253,7 @@
         _adBannerView.alpha = 0.0;
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"whetherDisplayAd"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 }
 

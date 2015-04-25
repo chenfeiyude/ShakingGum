@@ -12,15 +12,55 @@
 #import <CCTextureCache.h>
 @implementation GameOver
 {
-    CCLabelTTF *_finalScore;
+    CCLabelTTF *_finalScoreLabel;
+    CCLabelTTF *_bestScoreLabel;
+    
     NSInteger score;
+    NSInteger bestScore;
+    NSUserDefaults *defaults;
 }
+
 
 - (void)didLoadFromCCB
 {
-    score = [[NSUserDefaults standardUserDefaults] integerForKey:@"FinalScore"];
-    [_finalScore setString:[NSString stringWithFormat:@"x %ld", (long)score]];
+    [self configureScore];
+}
 
+- (void)configureScore
+{
+    // initialise user default
+    defaults = [NSUserDefaults standardUserDefaults];
+    
+    // load the score from GamePlay scene
+    score = [[NSUserDefaults standardUserDefaults] integerForKey:@"FinalScore"];
+    
+    if([[[defaults dictionaryRepresentation] allKeys] containsObject:@"BestScore"])
+    {
+        // load the best score from user default
+        bestScore = [defaults integerForKey:@"BestScore"];
+    }
+    else
+    {
+        // initialise best score at the fist time
+        [defaults setInteger:0 forKey:@"BestScore"];
+        [defaults synchronize];
+    }
+    
+    // if current score is bigger than best score, then update best score
+    if(score > bestScore)
+    {
+        [defaults setInteger:score forKey:@"BestScore"];
+        [defaults synchronize];
+        
+        // read best score from use default again after update
+        bestScore = [defaults integerForKey:@"BestScore"];
+    }
+
+    
+    [_bestScoreLabel setString:[NSString stringWithFormat:@"x %ld", (long)bestScore]];
+    [_finalScoreLabel setString:[NSString stringWithFormat:@"x %ld", (long)score]];
+    
+    
 }
 
 - (void)playAgain
@@ -93,6 +133,9 @@
     [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
+    
+    [defaults removeObjectForKey:@"FinalScore"];
+    [defaults synchronize];
 }
 
 @end
