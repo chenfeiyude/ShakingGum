@@ -204,7 +204,7 @@
 - (void)scoringAnimation: (NSString *)message
 {
     CCLabelTTF *_scoreSignLabel = [[CCLabelTTF alloc] initWithString:message fontName:@"MarkerFelt-Wide" fontSize:25.0];
-    _scoreSignLabel.fontColor = _scoreLabel.fontColor;
+    _scoreSignLabel.color = _scoreLabel.color;
     
     
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
@@ -217,7 +217,7 @@
         [_scoreSignLabel setString:message];
     }];
     
-    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 20.0)];
+    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 40.0)];
     CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0 position:CGPointMake(0, -10.0)];
  
     
