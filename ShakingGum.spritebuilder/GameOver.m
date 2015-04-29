@@ -106,7 +106,7 @@
     else
     {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"You can't send a post right now, make sure your device has an internet connection and you have at least one Facebook account setup"
+                                                            message:@"You can't send a post right now, make sure your device has an Internet connection and you have at least one Facebook account setup"
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
