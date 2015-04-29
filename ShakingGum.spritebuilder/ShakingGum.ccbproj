@@ -80,9 +80,14 @@
 		</dict>
 		<key>Gum.ccbi</key>
 		<dict/>
+		<key>Icon</key>
+		<dict>
+			<key>isSmartSpriteSheet</key>
+			<true/>
+		</dict>
 		<key>Images</key>
 		<dict>
-			<key>isDirty</key>
+			<key>isSmartSpriteSheet</key>
 			<true/>
 			<key>isSmartSpriteSheet</key>
 			<true/>
