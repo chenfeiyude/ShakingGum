@@ -478,6 +478,7 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FA551E881AF448D60056BDC3 /* Manager */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				F02681601ACC02B5006DECD1 /* Model */,
 				F01FBD5D1AB641DC006F762F /* GamePlay.h */,
@@ -612,14 +613,21 @@
 				FAD934FD1ABA576B0050B39E /* Bomb.m */,
 				FAD934FF1ABA57A30050B39E /* ScoreItem.h */,
 				FAD935001ABA57A30050B39E /* ScoreItem.m */,
-				FAF579BB1ABB7AE300879760 /* ItemManager.h */,
-				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
-				F022D5A71AE8FBA400142EDF /* SoundManager.h */,
-				F022D5A81AE8FBA400142EDF /* SoundManager.m */,
 				FAD916121AE9C0B7001BFCA6 /* TimeItem.h */,
 				FAD916131AE9C0B7001BFCA6 /* TimeItem.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FA551E881AF448D60056BDC3 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FAF579BB1ABB7AE300879760 /* ItemManager.h */,
+				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
+				F022D5A71AE8FBA400142EDF /* SoundManager.h */,
+				F022D5A81AE8FBA400142EDF /* SoundManager.m */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,7 +696,7 @@
 		B77F1B2617B978D7009739AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Apportable;
 				TargetAttributes = {
 					7A4035FE19DDEE84007B6E8F = {
@@ -1142,6 +1150,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
@@ -1175,6 +1184,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					"NS_BLOCK_ASSERTIONS=1",

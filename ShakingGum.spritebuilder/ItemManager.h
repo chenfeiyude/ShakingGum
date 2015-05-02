@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, ItemType) {
     NSMutableArray * currentItems;
     NSInteger maxItemSize;
     NSInteger maxBombSize;
+    NSInteger maxScoreSize;
+    NSInteger maxTimeSize;
 }
 
 +(id) getInstance; // this class is a singleton class  e.g ItemManager *sharedManager = [ItemManager getInstance];

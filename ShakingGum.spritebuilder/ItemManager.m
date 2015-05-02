@@ -22,6 +22,8 @@
         currentItems = [NSMutableArray new];
         maxItemSize  = 10;
         maxBombSize  = 3;
+        maxScoreSize = 4;
+        maxTimeSize  = 3;
     }
     
     return self;
@@ -99,18 +101,26 @@
         NSInteger score_range = range * ( SCORE_ITEM + 1);
         NSInteger time_range = range * (TIME_ITEM + 1);
         NSInteger bomb_number = 0;
+        NSInteger score_number = 0;
+        NSInteger time_number = 0;
         for (id item in currentItems) {
             if ([item isKindOfClass:[Bomb class]]) {
                 bomb_number++;
+            }
+            else if ([item isKindOfClass:[ScoreItem class]]){
+                score_number++;
+            }
+            else if ([item isKindOfClass:[TimeItem class]]) {
+                time_number++;
             }
         }
         if (random <= bomb_range && bomb_number < maxBombSize) {
             itemType = BOMB;
         }
-        else if (random > bomb_range && random <= score_range) {
+        else if (random > bomb_range && random <= score_range && score_number < maxScoreSize) {
             itemType = SCORE_ITEM;
         }
-        else if (random > score_range && random <= time_range) {
+        else if (random > score_range && random <= time_range && time_number < maxTimeSize) {
             itemType = TIME_ITEM;
         }
         return [self createItem: itemType];

@@ -50,7 +50,7 @@ static NSString* itemChildName = @"itemObj";
 -(void) initSpeed{
     //set a random speed here
     CGFloat yDirection = -1.f;
-    speed = CGPointMake(arc4random_uniform(20) * [self getRandomXDirection], yDirection * (arc4random_uniform(100) + 100));
+    speed = CGPointMake(arc4random_uniform(20) * [self getRandomXDirection], yDirection * (arc4random_uniform(500) + 100));
 }
 
 -(BOOL) isDead {
