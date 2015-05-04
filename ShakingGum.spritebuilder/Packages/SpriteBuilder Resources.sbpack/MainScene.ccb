@@ -2559,7 +2559,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Images/gumBody.png</string>
+							<string>Images/GumBody.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2595,6 +2595,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
