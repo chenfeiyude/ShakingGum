@@ -9,9 +9,11 @@
 #import "GameOver.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+#import "AdManager.h"
 #import <CCTextureCache.h>
 @implementation GameOver
 {
+    AdManager *_adManager;
     CCLabelTTF *_finalScoreLabel;
     CCLabelTTF *_bestScoreLabel;
     
@@ -20,10 +22,10 @@
     NSUserDefaults *defaults;
 }
 
-
 - (void)didLoadFromCCB
 {
     [self configureScore];
+    _adManager = [[AdManager alloc] init];
 }
 
 - (void)configureScore
@@ -130,6 +132,7 @@
 -(void)onExit
 {
     [super onExit];
+    [_adManager hideAd];
     [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];

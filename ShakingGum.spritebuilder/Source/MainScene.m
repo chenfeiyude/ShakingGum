@@ -1,8 +1,16 @@
 
 
 #import "MainScene.h"
+#import "AdManager.h"
 #import <CCTextureCache.h>
-@implementation MainScene
+
+@implementation MainScene {
+    AdManager *_adManager;
+}
+
+-(void) didLoadFromCCB {
+    _adManager = [[AdManager alloc] init];
+}
 
 - (void)play
 {
@@ -13,6 +21,7 @@
 -(void)onExit
 {
     [super onExit];
+    [_adManager hideAd];
     [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];

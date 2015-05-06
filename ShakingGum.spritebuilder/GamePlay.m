@@ -36,6 +36,20 @@
     SoundManager *_soundManager;
     
     AnimationManager *_animationManager;
+    
+    BOOL isGameOver;
+}
+
+-(id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        isGameOver = false;
+    }
+    
+    return self;
 }
 
 
@@ -85,32 +99,30 @@
     if ([[gum getStatus] getStatus] != DEAD) {
         [_scoreLabel setString:[NSString stringWithFormat:@"x %ld", (long)[gum getScore]]];
         [_timeLabel setString:[NSString stringWithFormat:@"Time: %ld s", (long)[gum getRemainTime]]];
-    }
-    else {
-        // show share and score
-        [[NSUserDefaults standardUserDefaults] setInteger:[gum getScore] forKey:@"FinalScore"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [_soundManager playGameEndSound];
-        [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.3];//call gameOver method after delay
-    }
-    
-    // do every thing for the items here
-    for (id obj in _physicsNode.children) {
-        if ([obj isKindOfClass:[Item class]]) {
-            Item* item = (Item* ) obj;
-            for (CCNode * itemObj in item.children) {
-                //check dead items here -------------------
-                if ([item convertToWorldSpace:itemObj.position].y <= 0) {
-                    //delete all items out of screen
-                    [item killItem];
+        
+        
+        // do every thing for the items here
+        for (id obj in _physicsNode.children) {
+            if ([obj isKindOfClass:[Item class]]) {
+                Item* item = (Item* ) obj;
+                for (CCNode * itemObj in item.children) {
+                    //check dead items here -------------------
+                    if ([item convertToWorldSpace:itemObj.position].y <= 0) {
+                        //delete all items out of screen
+                        [item killItem];
+                    }
+                    
                 }
-
             }
+            
         }
         
+        [_itemManager deleteDeadItems];
+        
     }
-    
-    [_itemManager deleteDeadItems];
+    else {
+        [self gameOver];
+    }
 }
 
 
@@ -180,12 +192,21 @@
 
 -(void) gameOver
 {
-    [_itemManager clearItems];
-    CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
-    
-    // Hide the ad banner
-    [_adManager hideAd];
-    [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
+    if (isGameOver == NO) {
+        // show share and score
+        [[NSUserDefaults standardUserDefaults] setInteger:[gum getScore] forKey:@"FinalScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [_soundManager playGameEndSound];
+        
+        [_itemManager clearItems];
+        CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
+        
+        // Hide the ad banner
+        [_adManager hideAd];
+        [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
+        
+        isGameOver = YES;
+    }
 }
 
 -(void)onExit

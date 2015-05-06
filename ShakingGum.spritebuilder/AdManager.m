@@ -50,10 +50,7 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     // Hide the ad banner.
-    if (_adBannerView != nil) {
-        _adBannerView.alpha = 0.0;
-    }
-    
+    [self hideAd];
 }
 
 - (void)bannerViewActionDidFinish:(ADBannerView *)banner
@@ -61,10 +58,7 @@
     // Hide the ad banner.
     [UIView animateWithDuration:0.5 animations:^
      {
-         if (_adBannerView != nil) {
-             _adBannerView.alpha = 0.0;
-         }
-         
+         [self hideAd];
          [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"whetherDisplayAd"];
          [[NSUserDefaults standardUserDefaults] synchronize];
      }];
