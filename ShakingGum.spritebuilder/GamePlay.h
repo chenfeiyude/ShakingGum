@@ -10,8 +10,8 @@
 
 #import <CCActionInterval.h>
 #import "AppDelegate.h"
-#import <iAd/iAd.h>
 
 
-@interface GamePlay : CCNode <ADBannerViewDelegate>
+
+@interface GamePlay : CCNode 
 @end

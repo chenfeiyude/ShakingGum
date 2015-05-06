@@ -14,10 +14,9 @@
 #import "Bomb.h"
 #import "ScoreItem.h"
 #import "SoundManager.h"
-
-#import "AppDelegate.h"
+#import "AdManager.h"
 #import <CCTextureCache.h>
-
+#import "AnimationManager.h"
 @implementation GamePlay
 {
     Gum *gum;
@@ -31,10 +30,12 @@
     CCLabelTTF *_timeLabel;
     
     CGPoint beginTouchLocation;
-
-    ADBannerView *_adBannerView;
+    
+    AdManager *_adManager;
     
     SoundManager *_soundManager;
+    
+    AnimationManager *_animationManager;
 }
 
 
@@ -57,24 +58,9 @@
     
     _soundManager = [[SoundManager alloc] init];
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"whetherDisplayAd"])
-    {
-        // iAd initialise
-        _adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-        _adBannerView.delegate = self;
-    }
+    _adManager = [[AdManager alloc] init];
     
-    CGSize screenSize = [CCDirector sharedDirector].viewSize;
-    CGRect frame = _adBannerView.frame;
-    frame.origin.y = screenSize.height-_adBannerView.frame.size.height;
-    frame.origin.x = 0.0f;
-    
-    _adBannerView.frame = frame;
-    
-    [_adBannerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    
-    AppController *app = (((AppController*) [UIApplication sharedApplication].delegate));
-    [app.navController.view addSubview:_adBannerView];
+    _animationManager = [[AnimationManager alloc] init: self];
 }
 
 
@@ -151,23 +137,23 @@
         switch (gum.getStatus.getStatus) {
             case ADD_SCORE:
                 // show +1
-                [self scoringAnimation:@"+1"];
+                [_animationManager scoringAnimation:@"+1" scoreLabel:_scoreLabel];
                 [_soundManager playScoringSound];
                 
                 break;
             case ADD_TIME:
-                [self scoringAnimation:@"+5s"];
+                [_animationManager scoringAnimation:@"+5s" scoreLabel:_scoreLabel];
                 [_soundManager playScoringSound];
                 break;
             case REDUCE_TIME:
                 // show -5s
-                [self scoringAnimation:@"-5s"];
+                [_animationManager scoringAnimation:@"-5s" scoreLabel:_scoreLabel];
                 [_soundManager playExplodingSound];
                 
                 break;
             case DEAD:
                 // show dead!!
-                [self scoringAnimation:@"Dead"];
+                [_animationManager scoringAnimation:@"Dead" scoreLabel:_scoreLabel];
                 [_soundManager playGameEndSound];
                 
                 break;
@@ -198,63 +184,8 @@
     CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
     
     // Hide the ad banner
-    _adBannerView.alpha = 0.0;
+    [_adManager hideAd];
     [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
-}
-
-- (void)scoringAnimation: (NSString *)message
-{
-    CCLabelTTF *_scoreSignLabel = [[CCLabelTTF alloc] initWithString:message fontName:@"MarkerFelt-Wide" fontSize:25.0];
-    _scoreSignLabel.color = _scoreLabel.color;
-    
-    
-    CGSize screenSize = [CCDirector sharedDirector].viewSize;
-    _scoreSignLabel.position = ccp(screenSize.width/2, screenSize.height/2 + 30);
-    
-    [self addChild:_scoreSignLabel];
-    
-    CCActionCallBlock *showContent = [CCActionCallBlock actionWithBlock:^
-    {
-        [_scoreSignLabel setString:message];
-    }];
-    
-    CCActionMoveBy *moveUp = [CCActionMoveBy actionWithDuration:0.5 position:CGPointMake(0, 40.0)];
-    CCActionMoveBy *moveDown = [CCActionMoveBy actionWithDuration:0 position:CGPointMake(0, -10.0)];
- 
-    
-    CCActionCallBlock *hideContent= [CCActionCallBlock actionWithBlock:^
-    {
-        [_scoreSignLabel setString:@""];
-    }];
-    
-    CCActionCallBlock *remvoeLabel = [CCActionCallBlock actionWithBlock:^
-    {
-        [self removeChild:_scoreSignLabel];
-    }];
-
-   
-    CCActionSequence *sequence = [CCActionSequence actionWithArray: @[showContent, moveUp, hideContent, moveDown, remvoeLabel]];
-    [_scoreSignLabel runAction:sequence];
-}
-
-#pragma mark iAd Delegate
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    // Hide the ad banner.
-    _adBannerView.alpha = 0.0;
-
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner
-{
-    // Hide the ad banner.
-    [UIView animateWithDuration:0.5 animations:^
-    {
-        _adBannerView.alpha = 0.0;
-        
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"whetherDisplayAd"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }];
 }
 
 -(void)onExit

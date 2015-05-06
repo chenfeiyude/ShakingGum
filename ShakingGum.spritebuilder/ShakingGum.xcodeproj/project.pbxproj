@@ -61,6 +61,8 @@
 		F04635801AE7B42D00BA9207 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F046357F1AE7B42C00BA9207 /* iAd.framework */; };
 		F06800811AE13F59009C9E39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06800801AE13F59009C9E39 /* Social.framework */; };
 		FA7A6AE01ADF450E000A9FA6 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */; };
+		FAD260A81AF9891D00424EF3 /* AdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD260A71AF9891D00424EF3 /* AdManager.m */; };
+		FAD260AD1AF98DDE00424EF3 /* AnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD260AC1AF98DDE00424EF3 /* AnimationManager.m */; };
 		FAD916141AE9C0B7001BFCA6 /* TimeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD916131AE9C0B7001BFCA6 /* TimeItem.m */; };
 		FAD934F61ABA3BD80050B39E /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934F51ABA3BD80050B39E /* Item.m */; };
 		FAD934FB1ABA3CD00050B39E /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD934FA1ABA3CD00050B39E /* Status.m */; };
@@ -210,6 +212,10 @@
 		F06800801AE13F59009C9E39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FA7A6ADE1ADF450E000A9FA6 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
 		FA7A6ADF1ADF450E000A9FA6 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOver.m; sourceTree = "<group>"; };
+		FAD260A61AF9891D00424EF3 /* AdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdManager.h; sourceTree = "<group>"; };
+		FAD260A71AF9891D00424EF3 /* AdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdManager.m; sourceTree = "<group>"; };
+		FAD260AB1AF98DDE00424EF3 /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationManager.h; sourceTree = "<group>"; };
+		FAD260AC1AF98DDE00424EF3 /* AnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationManager.m; sourceTree = "<group>"; };
 		FAD916121AE9C0B7001BFCA6 /* TimeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeItem.h; sourceTree = "<group>"; };
 		FAD916131AE9C0B7001BFCA6 /* TimeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeItem.m; sourceTree = "<group>"; };
 		FAD934F41ABA3BD80050B39E /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -631,6 +637,10 @@
 				FAF579BC1ABB7AE300879760 /* ItemManager.m */,
 				F022D5A71AE8FBA400142EDF /* SoundManager.h */,
 				F022D5A81AE8FBA400142EDF /* SoundManager.m */,
+				FAD260A61AF9891D00424EF3 /* AdManager.h */,
+				FAD260A71AF9891D00424EF3 /* AdManager.m */,
+				FAD260AB1AF98DDE00424EF3 /* AnimationManager.h */,
+				FAD260AC1AF98DDE00424EF3 /* AnimationManager.m */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -903,8 +913,10 @@
 				FAD934FE1ABA576B0050B39E /* Bomb.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				F01FBD5F1AB641DC006F762F /* GamePlay.m in Sources */,
+				FAD260A81AF9891D00424EF3 /* AdManager.m in Sources */,
 				FAD916141AE9C0B7001BFCA6 /* TimeItem.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				FAD260AD1AF98DDE00424EF3 /* AnimationManager.m in Sources */,
 				FAF579BD1ABB7AE300879760 /* ItemManager.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				F028EB831AC22B190061D2FA /* Gum.m in Sources */,
