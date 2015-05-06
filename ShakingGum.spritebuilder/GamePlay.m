@@ -99,30 +99,29 @@
     if ([[gum getStatus] getStatus] != DEAD) {
         [_scoreLabel setString:[NSString stringWithFormat:@"x %ld", (long)[gum getScore]]];
         [_timeLabel setString:[NSString stringWithFormat:@"Time: %ld s", (long)[gum getRemainTime]]];
-        
-        
-        // do every thing for the items here
-        for (id obj in _physicsNode.children) {
-            if ([obj isKindOfClass:[Item class]]) {
-                Item* item = (Item* ) obj;
-                for (CCNode * itemObj in item.children) {
-                    //check dead items here -------------------
-                    if ([item convertToWorldSpace:itemObj.position].y <= 0) {
-                        //delete all items out of screen
-                        [item killItem];
-                    }
-                    
-                }
-            }
-            
-        }
-        
-        [_itemManager deleteDeadItems];
-        
     }
     else {
-        [self gameOver];
+        //call gameOver method after delay, need to show the last one exploding
+        [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.3];
     }
+    
+    // do every thing for the items here
+    for (id obj in _physicsNode.children) {
+        if ([obj isKindOfClass:[Item class]]) {
+            Item* item = (Item* ) obj;
+            for (CCNode * itemObj in item.children) {
+                //check dead items here -------------------
+                if ([item convertToWorldSpace:itemObj.position].y <= 0) {
+                    //delete all items out of screen
+                    [item killItem];
+                }
+                
+            }
+        }
+        
+    }
+    
+    [_itemManager deleteDeadItems];
 }
 
 
