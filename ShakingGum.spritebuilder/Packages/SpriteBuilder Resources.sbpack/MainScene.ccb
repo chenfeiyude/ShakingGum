@@ -230,10 +230,10 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>40</real>
-							<integer>0</integer>
-							<integer>0</integer>
+							<real>0.1875</real>
+							<real>0.070422537624835968</real>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -245,8 +245,8 @@
 						<array>
 							<real>0.0</real>
 							<real>0.0</real>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
