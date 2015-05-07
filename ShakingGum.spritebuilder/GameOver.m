@@ -116,6 +116,13 @@
     }
 }
 
+- (void)ShareOnWeChat
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Opps" message:@"Share your score to WeChat will coming soon" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    
+    [alertView show];
+}
+
 // get screen shot
 - (UIImage *) screenshot
 {
