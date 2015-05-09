@@ -82,8 +82,6 @@
 		<dict/>
 		<key>Images</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>trimSprites</key>
 			<true/>
 		</dict>

@@ -7,9 +7,8 @@
 //
 
 #import "GameOver.h"
-#import <Social/Social.h>
-#import "AppDelegate.h"
 #import "AdManager.h"
+#import "ShareManager.h"
 #import <CCTextureCache.h>
 @implementation GameOver
 {
@@ -20,12 +19,15 @@
     NSInteger score;
     NSInteger bestScore;
     NSUserDefaults *defaults;
+    
+    ShareManager *shareManager;
 }
 
 - (void)didLoadFromCCB
 {
     [self configureScore];
     _adManager = [[AdManager alloc] init];
+    shareManager = [[ShareManager alloc] init:score];
 }
 
 - (void)configureScore
@@ -71,70 +73,29 @@
     [[CCDirector sharedDirector] replaceScene:gameOverScene];
 }
 
+
+
+- (void)ShareOnTwitter
+{
+    [shareManager shareOnTwitter];
+}
+
 - (void)ShareOnFaceBook
 {
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
-    {
-        AppController * app = (((AppController*)[UIApplication sharedApplication].delegate));
-        
-        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        
-        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result)
-        {
-            if (result == SLComposeViewControllerResultCancelled)
-            {
-                
-                NSLog(@"Cancelled");
-            } else
-                
-            {
-                NSLog(@"Done");
-            }
-            
-            [app.navController dismissViewControllerAnimated:YES completion:Nil];
-        };
-        controller.completionHandler =myBlock;
-        
-        [controller addImage:[self screenshot]];
-        //Adding the Text to the facebook post value from iOS
-        [controller setInitialText:[NSString stringWithFormat:@"Check out my highscore of ShakingGum!: %ld #ShakingGum",(long)score]];
-        
-        //Adding the URL to the facebook post value from iOS
-        [controller addURL:[NSURL URLWithString:@"https://itunes.apple.com/"]];
-    
-        [app.navController presentViewController:controller animated:NO completion:Nil];
-    }
-    
-    else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"You can't send a post right now, make sure your device has an Internet connection and you have at least one Facebook account setup"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
+    [shareManager shareOnFacebook];
 }
 
 - (void)ShareOnWeChat
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Opps" message:@"Share your score to WeChat will coming soon" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    [alertView show];
+    [shareManager shareOnWeChat];
 }
 
-// get screen shot
-- (UIImage *) screenshot
+- (void)ShareOnWeibo
 {
-    AppController* app = (((AppController*)[UIApplication sharedApplication].delegate));
-    UIGraphicsBeginImageContextWithOptions(app.navController.view.bounds.size, NO, [UIScreen mainScreen].scale);
-    
-    [app.navController.view drawViewHierarchyInRect:app.navController.view.bounds afterScreenUpdates:YES];
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
+    [shareManager shareOnWeibo];
 }
+
+
 
 -(void)onExit
 {

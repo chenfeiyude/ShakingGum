@@ -60,6 +60,7 @@
 		F028EB831AC22B190061D2FA /* Gum.m in Sources */ = {isa = PBXBuildFile; fileRef = F028EB821AC22B190061D2FA /* Gum.m */; };
 		F04635801AE7B42D00BA9207 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F046357F1AE7B42C00BA9207 /* iAd.framework */; };
 		F06800811AE13F59009C9E39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06800801AE13F59009C9E39 /* Social.framework */; };
+		F09262281AFEB8E100A433AA /* ShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F09262271AFEB8E100A433AA /* ShareManager.m */; };
 		F0B446871AFB719100B00AC6 /* Infinite-320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B4466E1AFB719100B00AC6 /* Infinite-320x480.png */; };
 		F0B446881AFB719100B00AC6 /* Infinite-640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B4466F1AFB719100B00AC6 /* Infinite-640x960.png */; };
 		F0B446891AFB719100B00AC6 /* Infinite-640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B446701AFB719100B00AC6 /* Infinite-640x1136.png */; };
@@ -211,6 +212,8 @@
 		F028EB821AC22B190061D2FA /* Gum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gum.m; sourceTree = "<group>"; };
 		F046357F1AE7B42C00BA9207 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		F06800801AE13F59009C9E39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F09262261AFEB8E100A433AA /* ShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareManager.h; sourceTree = "<group>"; };
+		F09262271AFEB8E100A433AA /* ShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareManager.m; sourceTree = "<group>"; };
 		F0B4466E1AFB719100B00AC6 /* Infinite-320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinite-320x480.png"; sourceTree = "<group>"; };
 		F0B4466F1AFB719100B00AC6 /* Infinite-640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinite-640x960.png"; sourceTree = "<group>"; };
 		F0B446701AFB719100B00AC6 /* Infinite-640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinite-640x1136.png"; sourceTree = "<group>"; };
@@ -644,6 +647,8 @@
 				FAD260A71AF9891D00424EF3 /* AdManager.m */,
 				FAD260AB1AF98DDE00424EF3 /* AnimationManager.h */,
 				FAD260AC1AF98DDE00424EF3 /* AnimationManager.m */,
+				F09262261AFEB8E100A433AA /* ShareManager.h */,
+				F09262271AFEB8E100A433AA /* ShareManager.m */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -920,6 +925,7 @@
 				FAD260A81AF9891D00424EF3 /* AdManager.m in Sources */,
 				FAD916141AE9C0B7001BFCA6 /* TimeItem.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				F09262281AFEB8E100A433AA /* ShareManager.m in Sources */,
 				FAD260AD1AF98DDE00424EF3 /* AnimationManager.m in Sources */,
 				FAF579BD1ABB7AE300879760 /* ItemManager.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
