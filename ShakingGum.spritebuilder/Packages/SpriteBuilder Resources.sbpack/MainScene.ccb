@@ -181,8 +181,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.18064618110656738</real>
-							<real>0.14497131109237671</real>
+							<real>0.16506704688072205</real>
+							<real>0.1819431483745575</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -3330,8 +3330,6 @@ open the game</string>
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -3365,8 +3363,8 @@ open the game</string>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>143.69642639160156</real>
-							<real>82.343704223632812</real>
+							<real>137.69642639160156</real>
+							<real>103.34371185302734</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
