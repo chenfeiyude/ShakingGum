@@ -13,7 +13,6 @@
 {
     NSInteger score;
     AppController *app;
-    
     NSString *app_link;
 }
 

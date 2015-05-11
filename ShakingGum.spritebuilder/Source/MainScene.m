@@ -1,15 +1,15 @@
 
 
 #import "MainScene.h"
-#import "AdManager.h"
+#import "AdMobManager.h"
 #import <CCTextureCache.h>
 
 @implementation MainScene {
-//    AdManager *_adManager;
+    AdMobManager *_adManager;
 }
 
 -(void) didLoadFromCCB {
-//    _adManager = [[AdManager alloc] init];
+    _adManager = [[AdMobManager alloc] init];
 }
 
 - (void)play
@@ -28,7 +28,7 @@
 -(void)onExit
 {
     [super onExit];
-//    [_adManager hideAd];
+    [_adManager hideAd];
     [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];

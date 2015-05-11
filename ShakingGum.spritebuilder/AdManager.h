@@ -11,7 +11,8 @@
 #import <iAd/iAd.h>
 #import "AppDelegate.h"
 
-@interface AdManager : NSObject <ADBannerViewDelegate>{
+@interface AdManager : NSObject <ADBannerViewDelegate>
+{
     ADBannerView *_adBannerView;
 }
 
