@@ -98,8 +98,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.85799688100814819</real>
-							<real>0.85799688100814819</real>
+							<real>1</real>
+							<real>1</real>
 							<true/>
 							<integer>0</integer>
 						</array>
@@ -148,6 +148,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -3363,11 +3365,11 @@ open the game</string>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>137.69642639160156</real>
-							<real>103.34371185302734</real>
+							<real>0.43030133843421936</real>
+							<real>0.1819431483745575</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
