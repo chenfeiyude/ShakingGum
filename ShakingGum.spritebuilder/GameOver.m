@@ -73,6 +73,11 @@
     [[CCDirector sharedDirector] replaceScene:gameOverScene];
 }
 
+-(void)toHomePage
+{
+    CCScene *mainScene = [CCBReader loadAsScene:@"MainScene"];
+    [[CCDirector sharedDirector] replaceScene:mainScene];
+}
 
 
 - (void)ShareOnTwitter
