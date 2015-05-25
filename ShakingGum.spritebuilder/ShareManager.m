@@ -24,7 +24,7 @@
     {
         app = (((AppController*)[UIApplication sharedApplication].delegate));
         score = currentScore;
-        app_link = @"https://itunes.apple.com/";
+        app_link = @"https://itunes.apple.com/us/app/shakinggum/id994348081?l=zh&ls=1&mt=8";
     }
     
     return self;
@@ -55,7 +55,7 @@
         
         [controller addImage:[self screenshot]];
         //Adding the Text to the twitter post value from iOS
-        [controller setInitialText:[NSString stringWithFormat:@"Check out my highscore of ShakingGum!: %ld #ShakingGum",(long)score]];
+        [controller setInitialText:[NSString stringWithFormat:@"Check out my high score of ShakingGum!: %ld #ShakingGum. Visit %@ for more details:)",(long)score, app_link]];
         
         //Adding the URL to the twitter post value from iOS
         [controller addURL:[NSURL URLWithString:app_link]];
@@ -72,7 +72,7 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-
+    
 }
 
 - (void)shareOnFacebook
@@ -148,7 +148,7 @@
         
         [controller addImage:[self screenshot]];
         //Adding the Text to the weibo post value from iOS
-        [controller setInitialText:[NSString stringWithFormat:@"Check out my highscore of ShakingGum!: %ld #ShakingGum",(long)score]];
+        [controller setInitialText:[NSString stringWithFormat:@"Check out my high score of ShakingGum!: %ld #ShakingGum. Visit %@ for more details:)",(long)score, app_link]];
         
         //Adding the URL to the weibo post value from iOS
         [controller addURL:[NSURL URLWithString:app_link]];
@@ -165,7 +165,7 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-
+    
 }
 
 // get screen shot
