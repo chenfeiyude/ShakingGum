@@ -108,7 +108,7 @@
 -(void)onExit
 {
     [super onExit];
-//    [_adManager hideAd];
+    [_adManager hideAd];
     [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
