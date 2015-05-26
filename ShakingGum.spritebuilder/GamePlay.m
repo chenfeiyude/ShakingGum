@@ -14,7 +14,7 @@
 #import "Bomb.h"
 #import "ScoreItem.h"
 #import "SoundManager.h"
-#import "AdManager.h"
+//#import "AdManager.h"
 #import <CCTextureCache.h>
 #import "AnimationManager.h"
 @implementation GamePlay
@@ -31,7 +31,7 @@
     
     CGPoint beginTouchLocation;
     
-    AdManager *_adManager;
+//    AdManager *_adManager;
     
     SoundManager *_soundManager;
     
@@ -72,7 +72,7 @@
     
     _soundManager = [[SoundManager alloc] init];
     
-    _adManager = [[AdManager alloc] init];
+//    _adManager = [[AdManager alloc] init];
     
     _animationManager = [[AnimationManager alloc] init: self];
 }
@@ -201,7 +201,7 @@
         CCScene *gameOverScene = [CCBReader loadAsScene:@"GameOver"];
         
         // Hide the ad banner
-        [_adManager hideAd];
+//        [_adManager hideAd];
         [[CCDirector sharedDirector] replaceScene:gameOverScene withTransition:[CCTransition transitionFadeWithDuration:3]];
         
         isGameOver = YES;

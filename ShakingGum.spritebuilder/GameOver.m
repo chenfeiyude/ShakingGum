@@ -7,12 +7,14 @@
 //
 
 #import "GameOver.h"
-#import "AdManager.h"
+//#import "AdManager.h"
+#import "AdMobManager.h"
 #import "ShareManager.h"
 #import <CCTextureCache.h>
 @implementation GameOver
 {
-    AdManager *_adManager;
+//    AdManager *_adManager;
+    AdMobManager *_adManager;
     CCLabelTTF *_finalScoreLabel;
     CCLabelTTF *_bestScoreLabel;
     
@@ -26,7 +28,8 @@
 - (void)didLoadFromCCB
 {
     [self configureScore];
-    _adManager = [[AdManager alloc] init];
+//    _adManager = [[AdManager alloc] init];
+    _adManager = [[AdMobManager alloc] init];
     shareManager = [[ShareManager alloc] init:score];
 }
 
@@ -105,7 +108,7 @@
 -(void)onExit
 {
     [super onExit];
-    [_adManager hideAd];
+//    [_adManager hideAd];
     [self removeAllChildren];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
