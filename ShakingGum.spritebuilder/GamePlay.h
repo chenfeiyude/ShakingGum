@@ -13,5 +13,5 @@
 
 
 
-@interface GamePlay : CCNode 
+@interface GamePlay : CCNode <CCPhysicsCollisionDelegate>
 @end
