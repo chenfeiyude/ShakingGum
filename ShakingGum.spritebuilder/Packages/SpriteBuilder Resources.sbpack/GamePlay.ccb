@@ -85,8 +85,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<integer>2</integer>
 							<integer>2</integer>
 						</array>
@@ -109,9 +109,9 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.1205092668533325</real>
-							<real>1.460690975189209</real>
-							<false/>
+							<real>1</real>
+							<real>1</real>
+							<true/>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -135,6 +135,8 @@
 						<real>0.5</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -755,8 +757,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

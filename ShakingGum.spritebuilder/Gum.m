@@ -105,7 +105,7 @@
             }
         }
         
-        NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE 3:REDUCE_TIME)", (long)[status getStatus]);
+        NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE 3:REDUCE_TIME 4:ADD_TIME)", (long)[status getStatus]);
     }
 }
 
