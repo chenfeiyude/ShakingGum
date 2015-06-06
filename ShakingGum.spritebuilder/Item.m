@@ -41,7 +41,7 @@ static NSString* itemChildName = @"itemObj";
     //init a random position here
     CGRect screen = [[UIScreen mainScreen] bounds];
     CGFloat width = CGRectGetWidth(screen);
-    CGFloat height = CGRectGetHeight(screen);
+    CGFloat height = CGRectGetHeight(screen) * 3 / 2;
     CCNode *itemObj = [self getChildByName:itemChildName recursively:false];
     width = arc4random_uniform(width - itemObj.boundingBox.size.width); // need to be improved
     self.position = CGPointMake(width, height); // initial item position

@@ -32,7 +32,7 @@
         [self creatGumBody];
         
         CGSize screenSize = [CCDirector sharedDirector].viewSize;
-        self.position = CGPointMake(screenSize.width/2 - 10, screenSize.height/2 - 10);
+        self.position = CGPointMake(screenSize.width/2 - 10, screenSize.height/2);
 //        self.scale = (0.5);
     }
     
