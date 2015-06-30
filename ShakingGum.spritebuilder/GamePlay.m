@@ -105,8 +105,8 @@
         [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.3];
     }
     
-    CCNode *head = [gum getGumHead];
-    NSLog(@"head x: %f y: %f", [head.parent convertToWorldSpace:head.position].x, [head.parent convertToWorldSpace:head.position].y);
+//    CCNode *head = [gum getGumHead];
+//    NSLog(@"head x: %f y: %f", [head.parent convertToWorldSpace:head.position].x, [head.parent convertToWorldSpace:head.position].y);
     
     // do every thing for the items here
     for (id obj in _physicsNode.children) {

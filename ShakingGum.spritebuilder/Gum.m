@@ -14,6 +14,8 @@
     CCNode *gumBody;
     CCNode *gumBase;
     
+    Item *currCrashingItem;
+    
     NSInteger score;
     NSInteger remainTime;
     NSInteger MAX_REMAIN_TIME;
@@ -79,7 +81,11 @@
 {
     if([status getStatus] != DEAD)
     {
-        if (isCrashingWithHead) {
+        if ([item isEqual:currCrashingItem]) {
+            //it is the same item, do not do any thing here
+            return;
+        }
+        else if (isCrashingWithHead) {
             Status* itemStatus = item.getStatus;
             [status setStatus:[itemStatus getStatus]];
             if ([item isKindOfClass:[ScoreItem class]]) {
@@ -91,6 +97,8 @@
                     remainTime = MAX_REMAIN_TIME;
                 }
             }
+            //update curr item
+            currCrashingItem = item;
         }
         else {
             // collision with body will reduce the time
@@ -103,6 +111,8 @@
                     remainTime = 0;
                 }
             }
+            //update curr item
+            currCrashingItem = item;
         }
         
         NSLog(@"Gum status changed to %ld (1:DEAD 2:ADD_SCORE 3:REDUCE_TIME 4:ADD_TIME)", (long)[status getStatus]);
